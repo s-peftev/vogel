@@ -4,21 +4,3 @@
   min-height: 100%;
   overflow: hidden;
 }
-
-.content {
-  flex: 1 1 auto;
-}
-.content .content__container {
-  display: flex;
-  position: relative;
-}
-.content .content__sidebar {
-  flex: 1 1 25%;
-}
-.content .content__profile {
-  flex: 1 1 75%;
-}
-
-.footer {
-  flex: 0 0 50px;
-}

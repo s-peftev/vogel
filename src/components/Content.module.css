@@ -1,0 +1,21 @@
+.content {
+    flex: 1 1 auto;
+    padding: 1.5rem 0;
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+	padding: 0 15px;
+
+    display: flex;
+    position: relative;
+}
+
+.sidebar {
+    flex: 1 1 25%;
+}
+
+.profile {
+    flex: 1 1 75%;
+}
