@@ -1,8 +1,8 @@
 import s from './Sidebar.module.css';
 
-function Sidebar() {
+const Sidebar = (props) => {
     return (
-      <div className={s.sidebar}>
+      <div className={`${props.parrentClass} ${s.sidebar}`}>
         <div className={s.header}>
           <a className={s.logo} href="/">
             <img src="https://bootstraptl.cn/preview/2022/1/qshu311796/img/logo.png" alt="logo"></img>

@@ -1,8 +1,8 @@
 import s from './UserCard.module.css';
 
-function UserCard() {
+const UserCard = (props) => {
     return (
-      <div className={s.user_card}>
+      <div className={`${props.parrentClass} ${s.user_card}`}>
         <div className={s.header}>
           <div className={s.photo}>
             <img src='https://images.squarespace-cdn.com/content/v1/5b6a682125bf02f85e285689/1546478840771-HG0TE1RQUIZGUHHY2TKW/edited.jpg?format=1000w' alt='profile avatar'></img>

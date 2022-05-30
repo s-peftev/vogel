@@ -6,12 +6,8 @@ function Content() {
     return (
       <div className={s.content}>
         <div className={s.container}>
-          <div className={s.sidebar}>
-            <Sidebar />
-          </div>
-          <div className={s.profile}>
-            <Profile />
-          </div>  
+          <Sidebar parrentClass={s.sidebar} />
+          <Profile parrentClass={s.profile} /> 
         </div>
       </div>
     );

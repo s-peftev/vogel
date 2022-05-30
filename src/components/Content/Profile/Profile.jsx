@@ -2,15 +2,11 @@ import UserCard from './UserCard/UserCard.jsx';
 import Posts from './Posts/Posts.jsx';
 import s from './Profile.module.css';
 
-function Profile() {
+const Profile = (props) => {
     return (
-      <div className={s.profile}>
-        <div className={s.user_card}>
-          <UserCard />
-        </div>
-        <div className={s.posts}>
-          <Posts />
-        </div>
+      <div className={`${props.parrentClass} ${s.profile}`}>
+        <UserCard parrentClass={s.user_card} />
+        <Posts parrentClass={s.posts} />
       </div>
     );
   }
