@@ -1,5 +1,5 @@
-import Sidebar from './Sidebar.jsx';
-import Profile from './Profile.jsx';
+import Sidebar from './Sidebar/Sidebar.jsx';
+import Profile from './Profile/Profile.jsx';
 import s from './Content.module.css';
 
 function Content() {

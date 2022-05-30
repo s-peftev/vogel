@@ -9,26 +9,26 @@ function UserCard() {
           </div>
           <div className={s.name}>
             <h6 className={s.user_name}>Gustav Header</h6>
-            <div className={s.login}>@gustav_header</div>
+            <p className={s.login}>@gustav_header</p>
           </div>
         </div>
         <div className={s.body}>
-          <div className={s.info}>
+          <p className={s.info}>
             <span className={s.key}>Birthday: </span>
             <span className={s.value}>25.05.1986</span>
-          </div>
-          <div className={s.info}>
+          </p>
+          <p className={s.info}>
             <span className={s.key}>City: </span>
             <span className={s.value}>Amsterdam</span>
-          </div>
-          <div className={s.info}>
+          </p>
+          <p className={s.info}>
             <span className={s.key}>Website: </span>
             <span className={s.value}>none</span>
-          </div>
-          <div className={s.info}>
+          </p>
+          <p className={s.info}>
             <span className={s.key}>About: </span>
             <span className={s.value}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit libero fuga voluptatibus ipsum. Incidunt cumque soluta adipisci, est repellendus dignissimos earum ad placeat harum libero! Consectetur dolor vero ducimus voluptas.</span>
-          </div>
+          </p>
         </div>
       </div>
     );
