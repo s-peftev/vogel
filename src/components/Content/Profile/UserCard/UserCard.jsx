@@ -1,8 +1,12 @@
+import React from 'react';
 import s from './UserCard.module.css';
 
-const UserCard = (props) => {
+class UserCard extends React.Component {
+  render() {
+    const { parrentClass } = this.props;
+
     return (
-      <div className={`${props.parrentClass} ${s.user_card}`}>
+      <div className={`${parrentClass} ${s.user_card}`}>
         <div className={s.header}>
           <div className={s.photo}>
             <img src='https://images.squarespace-cdn.com/content/v1/5b6a682125bf02f85e285689/1546478840771-HG0TE1RQUIZGUHHY2TKW/edited.jpg?format=1000w' alt='profile avatar'></img>
@@ -33,5 +37,6 @@ const UserCard = (props) => {
       </div>
     );
   }
-  
-  export default UserCard;
+}
+
+export default UserCard;

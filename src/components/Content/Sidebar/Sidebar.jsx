@@ -1,8 +1,12 @@
+import React from 'react';
 import s from './Sidebar.module.css';
 
-const Sidebar = (props) => {
+class Sidebar extends React.Component {
+  render() {
+    const { parrentClass } = this.props;
+
     return (
-      <div className={`${props.parrentClass} ${s.sidebar}`}>
+      <div className={`${ parrentClass } ${s.sidebar}`}>
         <div className={s.header}>
           <a className={s.logo} href="/">
             <img src="https://bootstraptl.cn/preview/2022/1/qshu311796/img/logo.png" alt="logo"></img>
@@ -43,5 +47,6 @@ const Sidebar = (props) => {
       </div>
     );
   }
+}
   
-  export default Sidebar;
+export default Sidebar;

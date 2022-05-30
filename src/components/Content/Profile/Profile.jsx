@@ -1,14 +1,18 @@
+import React from 'react';
 import UserCard from './UserCard/UserCard.jsx';
 import Posts from './Posts/Posts.jsx';
 import s from './Profile.module.css';
 
-const Profile = (props) => {
+class Profile extends React.Component {
+  render() {
+    const { parrentClass } = this.props;
     return (
-      <div className={`${props.parrentClass} ${s.profile}`}>
+      <main className={`${parrentClass} ${s.profile}`}>
         <UserCard parrentClass={s.user_card} />
         <Posts parrentClass={s.posts} />
-      </div>
+      </main>
     );
   }
+}
   
-  export default Profile;
+export default Profile;
