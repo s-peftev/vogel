@@ -8,37 +8,37 @@ class Sidebar extends React.Component {
     return (
       <div className={`${ parrentClass } ${s.sidebar}`}>
         <div className={s.header}>
-          <a className={s.logo} href="/">
-            <img src="https://bootstraptl.cn/preview/2022/1/qshu311796/img/logo.png" alt="logo"></img>
+          <a className={s.logo} href="/profile">
+            <img src='https://thumbs.dreamstime.com/z/set-letter-s-logotype-technology-digital-abstract-dot-connection-vector-logo-128608790.jpg' alt="logo"></img>
           </a>
         </div>
         <div className={s.nav}>
           <div className={s.item}>
-            <a className={`${s.link} ${s.active}`} href="/">
+            <a className={`${s.link} ${s.active}`} href="/profile">
               <img src="https://img.icons8.com/ios/24/000000/home--v1.png" alt=''/>
               <span>Profile</span>
             </a>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/">
+            <a className={s.link} href="/messages">
               <img src="https://img.icons8.com/ios/24/000000/topic.png" alt=''/>
               <span>Messages</span>
             </a>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/">
+            <a className={s.link} href="/news">
               <img src="https://img.icons8.com/ios/24/000000/news.png" alt=''/>
               <span>News</span>
             </a>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/">
+            <a className={s.link} href="/music">
               <img src="https://img.icons8.com/ios-glyphs/24/000000/apple-music.png" alt=''/>
               <span>Music</span>
             </a>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/">
+            <a className={s.link} href="/settings">
               <img src="https://img.icons8.com/ios/24/000000/settings--v1.png" alt=''/>
               <span>Settings</span>
             </a>
