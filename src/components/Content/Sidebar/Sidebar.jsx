@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './Sidebar.module.css';
 
 class Sidebar extends React.Component {
@@ -8,40 +9,60 @@ class Sidebar extends React.Component {
     return (
       <div className={`${ parrentClass } ${s.sidebar}`}>
         <div className={s.header}>
-          <a className={s.logo} href="/profile">
+          <NavLink className={s.logo} to="/profile">
             <img src='https://thumbs.dreamstime.com/z/set-letter-s-logotype-technology-digital-abstract-dot-connection-vector-logo-128608790.jpg' alt="logo"></img>
-          </a>
+          </NavLink>
         </div>
         <div className={s.nav}>
           <div className={s.item}>
-            <a className={`${s.link} ${s.active}`} href="/profile">
-              <img src="https://img.icons8.com/ios/24/000000/home--v1.png" alt=''/>
-              <span>Profile</span>
-            </a>
+            <NavLink 
+              className={({ isActive }) => {
+                return isActive ? `${s.link} ${s.active}` : s.link;
+            }} 
+              to="/profile">
+                <img src="https://img.icons8.com/ios/24/000000/home--v1.png" alt=''/>
+                <span>Profile</span>
+            </NavLink>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/messages">
-              <img src="https://img.icons8.com/ios/24/000000/topic.png" alt=''/>
-              <span>Messages</span>
-            </a>
+            <NavLink
+              className={({ isActive }) => {
+                return isActive ? `${s.link} ${s.active}` : s.link;
+            }} 
+              to="/messages">
+                <img src="https://img.icons8.com/ios/24/000000/topic.png" alt=''/>
+                <span>Messages</span>
+            </NavLink>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/news">
-              <img src="https://img.icons8.com/ios/24/000000/news.png" alt=''/>
-              <span>News</span>
-            </a>
+            <NavLink
+              className={({ isActive }) => {
+                return isActive ? `${s.link} ${s.active}` : s.link;
+            }} 
+              to="/news">
+                <img src="https://img.icons8.com/ios/24/000000/news.png" alt=''/>
+                <span>News</span>
+            </NavLink>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/music">
-              <img src="https://img.icons8.com/ios-glyphs/24/000000/apple-music.png" alt=''/>
-              <span>Music</span>
-            </a>
+            <NavLink
+              className={({ isActive }) => {
+                return isActive ? `${s.link} ${s.active}` : s.link;
+            }} 
+              to="/music">
+                <img src="https://img.icons8.com/ios-glyphs/24/000000/apple-music.png" alt=''/>
+                <span>Music</span>
+            </NavLink>
           </div>
           <div className={s.item}>
-            <a className={s.link} href="/settings">
-              <img src="https://img.icons8.com/ios/24/000000/settings--v1.png" alt=''/>
-              <span>Settings</span>
-            </a>
+            <NavLink
+              className={({ isActive }) => {
+                return isActive ? `${s.link} ${s.active}` : s.link;
+            }} 
+              to="/settings">
+                <img src="https://img.icons8.com/ios/24/000000/settings--v1.png" alt=''/>
+                <span>Settings</span>
+            </NavLink>
           </div>
         </div>
       </div>
