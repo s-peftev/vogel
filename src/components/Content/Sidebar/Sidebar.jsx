@@ -9,7 +9,7 @@ class Sidebar extends React.Component {
     return (
       <div className={`${ parrentClass } ${s.sidebar}`}>
         <div className={s.header}>
-          <NavLink className={s.logo} to="/profile">
+          <NavLink className={s.logo} to="/">
             <img src='https://thumbs.dreamstime.com/z/set-letter-s-logotype-technology-digital-abstract-dot-connection-vector-logo-128608790.jpg' alt="logo"></img>
           </NavLink>
         </div>

@@ -5,12 +5,12 @@ import s from './Profile.module.css';
 
 class Profile extends React.Component {
   render() {
-    const { parrentClass } = this.props;
+
     return (
-      <main className={`${parrentClass} ${s.profile}`}>
+      <div className={s.profile}>
         <UserCard parrentClass={s.user_card} />
         <Posts parrentClass={s.posts} />
-      </main>
+      </div>
     );
   }
 }

@@ -3,11 +3,11 @@ import s from './News.module.css';
 
 class News extends React.Component {
   render() {
-    const { parrentClass } = this.props;
+
     return (
-      <main className={`${parrentClass} ${s.news}`}>
+      <div className={s.news}>
         News HERE
-      </main>
+      </div>
     );
   }
 }

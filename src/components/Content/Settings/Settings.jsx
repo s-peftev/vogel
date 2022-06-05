@@ -3,11 +3,11 @@ import s from './Settings.module.css';
 
 class Settings extends React.Component {
   render() {
-    const { parrentClass } = this.props;
+
     return (
-      <main className={`${parrentClass} ${s.settings}`}>
+      <div className={s.settings}>
         Settings HERE
-      </main>
+      </div>
     );
   }
 }

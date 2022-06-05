@@ -15,16 +15,16 @@ class Content extends React.Component {
         <div className={s.content}>
           <div className={s.container}>
             <Sidebar parrentClass={s.sidebar} />
-            <div className={s.main}>
+            <main className={s.main}>
               <Routes>
-                <Route path='/' element={<Profile />}/>
+              
                 <Route path='/profile' element={<Profile />}/>
                 <Route path='/messages' element={<Messages />}/>
                 <Route path='/news' element={<News />}/>
                 <Route path='/music' element={<Music />}/>
                 <Route path='/settings' element={<Settings />}/>
               </Routes>
-            </div>
+            </main>
           </div>
         </div>
       </BrowserRouter>
