@@ -10,25 +10,25 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 0.8125rem;
     line-height: 1.2;
-    color: #3f3f3f;
+    color: #C9D1D9;
     letter-spacing: 1px;
     resize: none;
+    background-color: #161B22;
+    border: 1px solid #30363d;
 }
 
 .button {
     align-self: flex-end;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 0.9rem;
-    font-weight: 700;
     text-transform: uppercase;
     padding: 12px 32px;
-    background-color: #0e6dfd;
+    background-color: #238636;
     color: white;
     border-radius: 11px;
 }
 
 .button:hover {
-    transform: scale(1.05);
-    background-color: #2d7cf1;
+    background-color: #38aa4f;
     transition: all 0.3s;
 }

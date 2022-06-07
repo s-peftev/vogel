@@ -1,5 +1,6 @@
 .user_card {
-    background-color: white;
+    background-color: #0D1117;
+    border: 1px solid #30363d;
     border-radius: 11px;
     padding: 1rem;
 }
@@ -30,6 +31,7 @@
 }
 
 .name {
+    color: #dddddd;
     line-height: 1.5;
 }
 
@@ -40,7 +42,7 @@
 
 .login {
     font-size: 0.8125rem;
-    color: #6c757d !important;
+    color: #C9D1D9 !important;
 }
 
 .body {
@@ -59,9 +61,10 @@
 }
 
 .key {
-    color: #000000;
+    color: #a3a3a3;
+    font-weight: 600;
 }
 
 .value {
-    color: #6c757d;
+    color: #ffffff;
 }

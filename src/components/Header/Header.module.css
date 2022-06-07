@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+    padding: 16px 32px;
+    background-color: #252b31;
+}
+
+.logo {
+    flex: 0 0 32px;
+    margin-left: 26px;
+}
+
+.logo img {
+    width: 100%;
+    height: auto;
+}

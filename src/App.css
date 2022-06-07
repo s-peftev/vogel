@@ -1,6 +1,19 @@
-.app-wrapper {
+.app-wrapper {}
+
+.main-row {
   display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  overflow: hidden;
+}
+
+.sidebar {
+  max-width: 350px;
+  background-color: #0d1117;
+  border-right: 1px solid #30363d;
+  min-height: calc(100vh - 64px); /* 64px - header height */
+}
+
+.main {
+  flex: auto;
+  width: 66.67%;
+  padding: 1.5rem;
+  background-color: #010409;
 }

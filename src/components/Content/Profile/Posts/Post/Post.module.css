@@ -1,7 +1,8 @@
 .post {
     display: flex;
     align-items: flex-start;
-    background-color: white;
+    background-color: #0D1117;
+    border: 1px solid #30363d;
     border-radius: 11px;
     padding: 1rem;
 }
@@ -46,6 +47,7 @@
 }
 
 .name {
+    color: #dddddd;
     font-size: 0.875rem;
     font-weight: 700;
 }
@@ -53,7 +55,7 @@
 .login,
 .date {
     font-size: 0.875em;
-    color: #6c757d !important;
+    color: #C9D1D9 !important;
 }
 
 .date {
@@ -64,7 +66,7 @@
     margin-top: .5rem !important;
     margin-bottom: .5rem !important;
     font-size: 0.875rem;
-    color: #6c757d !important;
+    color: #C9D1D9 !important;
 }
 
 .content p {

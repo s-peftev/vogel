@@ -8,6 +8,7 @@
     display: flex;
     justify-content: flex-end;
     gap: 0.8rem;
+    color: #C9D1D9 !important;
 }
 
 .icon {
