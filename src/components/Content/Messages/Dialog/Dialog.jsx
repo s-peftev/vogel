@@ -1,21 +1,27 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import s from './Dialog.module.css';
 
 class Dialog extends React.Component {
   render() {
-    const { photo, name, parrentClass } = this.props;
+    const { id, photo, name } = this.props;
 
     return (
-      <div className={`${parrentClass} ${s.dialog}`}>
+      <NavLink
+        className={({ isActive }) => {
+          return isActive ? `${s.dialog} ${s.active}` : s.dialog;
+        }}
+        to={`${id}`}
+      >
         <div className={s.photo}>
-          <img src={ photo } alt="" />
+          <img src={photo} alt="" />
         </div>
         <div className={s.name}>
-          <p>{ name }</p>
+          <p>{name}</p>
         </div>
-      </div>
+      </NavLink>
     );
   }
 }
-  
+
 export default Dialog;

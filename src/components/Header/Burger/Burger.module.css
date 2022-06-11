@@ -1,0 +1,47 @@
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.line {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #C9D1D9;
+}
+
+.line::before,
+.line::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #C9D1D9;
+  transition: all 0.5s;
+}
+
+.line::before {
+  top: -10px;
+}
+
+.line::after {
+  top: 10px;
+}
+
+.active .line {
+  height: 0;
+}
+
+.active .line::before {
+  transform: translate(0, 10px) rotate(45deg);
+}
+
+.active .line::after {
+  transform:  translate(0, -10px) rotate(-45deg);
+}

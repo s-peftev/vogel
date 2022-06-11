@@ -8,7 +8,15 @@
   max-width: 350px;
   background-color: #0d1117;
   border-right: 1px solid #30363d;
-  min-height: calc(100vh - 64px); /* 64px - header height */
+  min-height: calc(100vh - 64px);
+  /* 64px - header height */
+
+  position: sticky;
+  top: 0;
+  bottom: 0;
+  z-index: 30;
+  max-height: 100vh;
+  padding: 10px 28px;
 }
 
 .main {
@@ -16,4 +24,24 @@
   width: 66.67%;
   padding: 1.5rem;
   background-color: #010409;
+  min-height: calc(100vh - 64px);
+  /* 64px - header height */
+}
+
+/* TABLET */
+@media (max-width: 991.98px) {
+  .sidebar {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+    transition: all 0.5s;
+  }
+
+  .sidebar_active {
+    top: 0;
+    overflow: auto;
+  }
 }

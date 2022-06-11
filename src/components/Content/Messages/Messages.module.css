@@ -1,6 +1,6 @@
 .messages {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 2.5fr;
     grid-gap: 0.8rem;
 }
 
@@ -8,21 +8,16 @@
 
 .dialog {
     margin-bottom: 1rem;
-    padding: 8px 10px;
-    border-radius: 11px;
-    opacity: 0.75;
 }
 
 .dialog:last-child {
     margin-bottom: 0;
 }
 
-.dialog:hover,
-.dialog.active {
-    background: #82beee;
-    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
-    opacity: 1;
-    cursor: pointer;
+.messages_container {
 }
 
-.messages_container {}
+.message {
+    max-width: 50%;
+    margin-bottom: 0.3rem;
+}

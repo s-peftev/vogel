@@ -2,14 +2,31 @@
     display: flex;
     padding: 16px 32px;
     background-color: #252b31;
+    justify-content: space-between;
 }
 
 .logo {
     flex: 0 0 32px;
     margin-left: 26px;
+    display: flex;
+    align-items: center;
 }
 
 .logo img {
     width: 100%;
     height: auto;
+}
+
+.burger {
+    display: none;
+}
+
+/* TABLET */
+@media (max-width: 991.98px) {
+    .burger {
+        display: flex;
+        flex: 0 0 50px;
+        height: 50px;
+        z-index: 50;
+    }
 }

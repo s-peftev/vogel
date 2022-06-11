@@ -1,0 +1,10 @@
+.message {
+  display: inline-block;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.75rem;
+  background-color: #161B22;
+  border: 1px solid #30363d;
+  color: #C9D1D9;
+  padding: 12px 14px;
+  border-radius: 11px;
+}

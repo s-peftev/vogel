@@ -3,35 +3,38 @@ import s from './UserCard.module.css';
 
 class UserCard extends React.Component {
   render() {
-    const { parrentClass } = this.props;
+    const {
+      parrentClass,
+      info,
+    } = this.props;
 
     return (
       <div className={`${parrentClass} ${s.user_card}`}>
         <div className={s.header}>
           <div className={s.photo}>
-            <img src='https://images.squarespace-cdn.com/content/v1/5b6a682125bf02f85e285689/1546478840771-HG0TE1RQUIZGUHHY2TKW/edited.jpg?format=1000w' alt='profile avatar'></img>
+            <img src={ info.photo } alt='profile avatar'></img>
           </div>
           <div className={s.name}>
-            <h6 className={s.user_name}>Gustav Header</h6>
-            <p className={s.login}>@gustav_header</p>
+            <h6 className={s.user_name}>{ info.name }</h6>
+            <p className={s.login}>{ info.login }</p>
           </div>
         </div>
         <div className={s.body}>
           <p className={s.info}>
             <span className={s.key}>Birthday: </span>
-            <span className={s.value}>25.05.1986</span>
+            <span className={s.value}>{ info.birthday }</span>
           </p>
           <p className={s.info}>
             <span className={s.key}>City: </span>
-            <span className={s.value}>Amsterdam</span>
+            <span className={s.value}>{ info.city }</span>
           </p>
           <p className={s.info}>
             <span className={s.key}>Website: </span>
-            <span className={s.value}>none</span>
+            <span className={s.value}>{ info.website }</span>
           </p>
           <p className={s.info}>
             <span className={s.key}>About: </span>
-            <span className={s.value}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugit libero fuga voluptatibus ipsum. Incidunt cumque soluta adipisci, est repellendus dignissimos earum ad placeat harum libero! Consectetur dolor vero ducimus voluptas.</span>
+            <span className={s.value}>{ info.about }</span>
           </p>
         </div>
       </div>

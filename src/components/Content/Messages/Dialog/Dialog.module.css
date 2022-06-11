@@ -1,6 +1,17 @@
 .dialog {
   display: flex;
   align-items: center;
+  border-radius: 11px;
+  padding: 8px 10px;
+  color: #C9D1D9;
+}
+
+.dialog:hover,
+.active {
+    background: #21262D;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+    color: #5096E6;
+    cursor: pointer;
 }
 
 .photo {
