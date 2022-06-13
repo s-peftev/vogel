@@ -1,12 +1,12 @@
 import React from 'react';
-import s from './Message.module.css';
+import css from './Message.module.css';
 
 class Message extends React.Component {
   render() {
-    const { text } = this.props;
+    const { parrentClass, text } = this.props;
 
     return (
-      <div className={s.message}>
+      <div className={`${parrentClass} ${css.message}`}>
         { text }
       </div>
     );

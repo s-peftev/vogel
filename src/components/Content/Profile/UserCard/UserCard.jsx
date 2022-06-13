@@ -1,40 +1,37 @@
 import React from 'react';
-import s from './UserCard.module.css';
+import css from './UserCard.module.css';
 
 class UserCard extends React.Component {
   render() {
-    const {
-      parrentClass,
-      info,
-    } = this.props;
+    const { user_info } = this.props;
 
     return (
-      <div className={`${parrentClass} ${s.user_card}`}>
-        <div className={s.header}>
-          <div className={s.photo}>
-            <img src={ info.photo } alt='profile avatar'></img>
+      <div className={css.user_card}>
+        <div className={css.header}>
+          <div className={css.photo}>
+            <img src={ user_info.photo } alt='profile avatar'></img>
           </div>
-          <div className={s.name}>
-            <h6 className={s.user_name}>{ info.name }</h6>
-            <p className={s.login}>{ info.login }</p>
+          <div className={css.name}>
+            <h6 className={css.user_name}>{ user_info.name }</h6>
+            <p className={css.login}>{ user_info.login }</p>
           </div>
         </div>
-        <div className={s.body}>
-          <p className={s.info}>
-            <span className={s.key}>Birthday: </span>
-            <span className={s.value}>{ info.birthday }</span>
+        <div className={css.body}>
+          <p className={css.info}>
+            <span className={css.key}>Birthday: </span>
+            <span className={css.value}>{ user_info.birthday }</span>
           </p>
-          <p className={s.info}>
-            <span className={s.key}>City: </span>
-            <span className={s.value}>{ info.city }</span>
+          <p className={css.info}>
+            <span className={css.key}>City: </span>
+            <span className={css.value}>{ user_info.city }</span>
           </p>
-          <p className={s.info}>
-            <span className={s.key}>Website: </span>
-            <span className={s.value}>{ info.website }</span>
+          <p className={css.info}>
+            <span className={css.key}>Website: </span>
+            <span className={css.value}>{ user_info.website }</span>
           </p>
-          <p className={s.info}>
-            <span className={s.key}>About: </span>
-            <span className={s.value}>{ info.about }</span>
+          <p className={css.info}>
+            <span className={css.key}>About: </span>
+            <span className={css.value}>{ user_info.about }</span>
           </p>
         </div>
       </div>

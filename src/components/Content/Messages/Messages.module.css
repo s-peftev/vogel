@@ -14,10 +14,17 @@
     margin-bottom: 0;
 }
 
-.messages_container {
+.messages_container {}
+
+.sent_messages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
 }
+
+.new_message {}
 
 .message {
     max-width: 50%;
-    margin-bottom: 0.3rem;
 }

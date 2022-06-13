@@ -1,6 +1,6 @@
 import React from 'react';
 import Counters from './Counters/Counters.jsx';
-import s from './Post.module.css';
+import css from './Post.module.css';
 
 class Post extends React.Component {
   render() {
@@ -16,22 +16,22 @@ class Post extends React.Component {
     } = this.props;
     
     return (
-      <div className={`${parrentClass} ${s.post}`}>
-        <div className={s.photo}>
+      <div className={`${parrentClass} ${css.post}`}>
+        <div className={css.photo}>
           <img src={ photo } alt='post avatar'></img>
         </div>
-        <div className={s.body}>
-          <div className={s.header}>
-            <div className={s.user}>
-              <h6 className={s.name}>{ name }</h6>
-              <p className={s.login}>{ login }</p>
+        <div className={css.body}>
+          <div className={css.header}>
+            <div className={css.user}>
+              <h6 className={css.name}>{ name }</h6>
+              <p className={css.login}>{ login }</p>
             </div>
-            <p className={s.date}>{ date }</p>
+            <p className={css.date}>{ date }</p>
           </div>
-          <div className={s.content}>
+          <div className={css.content}>
             <p>{ text }</p>
           </div>
-          <Counters parrentClass={s.counters} likes_count={ likes_count } comments_count={ comments_count }/>
+          <Counters likes_count={ likes_count } comments_count={ comments_count }/>
         </div>
       </div>
     );

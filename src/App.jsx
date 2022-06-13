@@ -28,6 +28,8 @@ class App extends React.Component {
   }
 
   render() {
+    const { user_info, posts, dialogs, messages } = this.props;
+
     return (
       <div className="app-wrapper">
         <BrowserRouter>
@@ -37,7 +39,7 @@ class App extends React.Component {
               <Sidebar />
             </nav>
             <main className="main">
-              <Content />
+              <Content user_info={user_info} posts={posts} dialogs={dialogs} messages={messages}/>
             </main>
           </div>
         </BrowserRouter>
