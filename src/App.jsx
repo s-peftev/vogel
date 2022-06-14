@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { user_info, posts, dialogs, messages } = this.props;
+    const { state } = this.props;
 
     return (
       <div className="app-wrapper">
@@ -36,10 +36,10 @@ class App extends React.Component {
           <Header state={this.state} />
           <div className='main-row'>
             <nav className={this.state.burger.active ? 'sidebar sidebar_active' : 'sidebar'}>
-              <Sidebar />
+              <Sidebar state={ state.sidebar }/>
             </nav>
             <main className="main">
-              <Content user_info={user_info} posts={posts} dialogs={dialogs} messages={messages}/>
+              <Content state={ state.content }/>
             </main>
           </div>
         </BrowserRouter>

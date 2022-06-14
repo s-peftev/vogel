@@ -5,11 +5,21 @@ import Message from './Message/Message.jsx';
 
 class Messages extends React.Component {
   render() {
-    const { dialogs, messages } = this.props;
-    const dialogElements = dialogs
-      .map((dialog) => <Dialog key={dialog.id} parrentClass={css.dialog} {...dialog} />)
-    const messageElements = messages
-      .map((message) => <Message key={message.id} parrentClass={css.message} {...message} />)
+    const { state } = this.props;
+    const dialogElements = state.dialogs
+      .map((dialog) =>
+        <Dialog
+          key={dialog.id}
+          parrentClass={css.dialog}
+          {...dialog}
+        />)
+    const messageElements = state.messages
+      .map((message) =>
+        <Message
+          key={message.id}
+          parrentClass={message.isUsersMessage ? `${css.message} ${css.message__right}` : css.message}
+          {...message}
+        />)
 
     return (
       <div className={css.messages}>

@@ -10,7 +10,7 @@
   border-right: 1px solid #30363d;
   min-height: calc(100vh - 64px);
   /* 64px - header height */
-
+  overflow: auto;
   position: sticky;
   top: 0;
   bottom: 0;

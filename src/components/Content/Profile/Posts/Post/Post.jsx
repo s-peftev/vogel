@@ -20,15 +20,15 @@ class Post extends React.Component {
         <div className={css.photo}>
           <img src={ photo } alt='post avatar'></img>
         </div>
-        <div className={css.body}>
-          <div className={css.header}>
-            <div className={css.user}>
-              <h6 className={css.name}>{ name }</h6>
-              <p className={css.login}>{ login }</p>
+        <div className={ css.body }>
+          <div className={ css.header }>
+            <div className={ css.user }>
+              <h6 className={ css.name }>{ name }</h6>
+              <p className={ css.login }>{ login }</p>
             </div>
-            <p className={css.date}>{ date }</p>
+            <p className={  css.date}>{ date }</p>
           </div>
-          <div className={css.content}>
+          <div className={ css.content }>
             <p>{ text }</p>
           </div>
           <Counters likes_count={ likes_count } comments_count={ comments_count }/>
