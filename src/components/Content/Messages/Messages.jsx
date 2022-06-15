@@ -17,7 +17,7 @@ class Messages extends React.Component {
       .map((message) =>
         <Message
           key={message.id}
-          parrentClass={message.isUsersMessage ? `${css.message} ${css.message__right}` : css.message}
+          parrentClass={message.isUsersMessage ? `${css.message} ${css.message__is_users}` : css.message}
           {...message}
         />)
 
@@ -26,11 +26,18 @@ class Messages extends React.Component {
         <div className={css.dialogs}>
           {dialogElements}
         </div>
-        <div className={css.messages_container}>
+        <div className={css.messages_block}>
           <div className={css.sent_messages}>
-            {messageElements}
+            <div className={css.sent_messages__container}>
+              {messageElements}
+            </div>
           </div>
-          <div className={css.new_message}></div>
+          <div className={css.new_message}>
+            <textarea className={css.textarea} placeholder='Write a message...'></textarea>
+            <div className={css.message_controls}>
+              <button className={css.send_button}>Send</button>
+            </div>
+          </div>
         </div>
       </div>
     );
