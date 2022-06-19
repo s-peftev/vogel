@@ -1,3 +1,4 @@
+import renderApp from "../render.js";
 const state = {
     content: {
         profilePage: {
@@ -56,52 +57,6 @@ const state = {
                     photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Carlo_Ancelotti_2016_%28cropped%29.jpg/640px-Carlo_Ancelotti_2016_%28cropped%29.jpg',
                     name: 'Carlo Ancelotti',
                 },
-                {
-                    id: 1,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg',
-                    name: 'Emma Watson',
-                },
-                {
-                    id: 2,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Carlo_Ancelotti_2016_%28cropped%29.jpg/640px-Carlo_Ancelotti_2016_%28cropped%29.jpg',
-                    name: 'Carlo Ancelotti',
-                },{
-                    id: 1,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg',
-                    name: 'Emma Watson',
-                },
-                {
-                    id: 2,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Carlo_Ancelotti_2016_%28cropped%29.jpg/640px-Carlo_Ancelotti_2016_%28cropped%29.jpg',
-                    name: 'Carlo Ancelotti',
-                },{
-                    id: 1,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg',
-                    name: 'Emma Watson',
-                },
-                {
-                    id: 2,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Carlo_Ancelotti_2016_%28cropped%29.jpg/640px-Carlo_Ancelotti_2016_%28cropped%29.jpg',
-                    name: 'Carlo Ancelotti',
-                },{
-                    id: 1,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg',
-                    name: 'Emma Watson',
-                },
-                {
-                    id: 2,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Carlo_Ancelotti_2016_%28cropped%29.jpg/640px-Carlo_Ancelotti_2016_%28cropped%29.jpg',
-                    name: 'Carlo Ancelotti',
-                },{
-                    id: 1,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Emma_Watson_2013.jpg',
-                    name: 'Emma Watson',
-                },
-                {
-                    id: 2,
-                    photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Carlo_Ancelotti_2016_%28cropped%29.jpg/640px-Carlo_Ancelotti_2016_%28cropped%29.jpg',
-                    name: 'Carlo Ancelotti',
-                },
             ],
             messages: [
                 {
@@ -129,82 +84,8 @@ const state = {
                     text: 'so???))',
                     isUsersMessage: false,
                 },
-                {
-                    id: 1,
-                    text: 'Hello',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 2,
-                    text: 'What are u doing next Sat?',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 3,
-                    text: 'if u know what i mean))))',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 4,
-                    text: 'i like the way u think))',
-                    isUsersMessage: true,
-                },
-                {
-                    id: 5,
-                    text: 'so???))',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 1,
-                    text: 'Hello',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 2,
-                    text: 'What are u doing next Sat?',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 3,
-                    text: 'if u know what i mean))))',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 4,
-                    text: 'i like the way u think))',
-                    isUsersMessage: true,
-                },
-                {
-                    id: 5,
-                    text: 'so???))',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 1,
-                    text: 'Hello',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 2,
-                    text: 'What are u doing next Sat?',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 3,
-                    text: 'if u know what i mean))))',
-                    isUsersMessage: false,
-                },
-                {
-                    id: 4,
-                    text: 'i like the way u think))',
-                    isUsersMessage: true,
-                },
-                {
-                    id: 5,
-                    text: 'so???))',
-                    isUsersMessage: false,
-                },
-            ]
+            ],
+            messageInput: '',
         }
     },
     sidebar: {
@@ -223,4 +104,28 @@ const state = {
     }
 };
 
-export { state };
+const sendMessageHandler = (message) => {
+    const newMessage = {
+        id: 5,
+        text: message,
+        isUsersMessage: true,
+    };
+
+    state.content.messagesPage.messages.push(newMessage);
+
+    renderApp(state, appHandlers);
+};
+
+const inputMessageHandler = (inputedText) => {
+    state.content.messagesPage.messageInput = inputedText;
+    renderApp(state, appHandlers);
+}
+
+const appHandlers = {
+    messagesPage: {
+        sendMessageHandler,
+        inputMessageHandler,
+    }
+}
+
+export { state, appHandlers };

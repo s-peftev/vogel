@@ -7,6 +7,12 @@
 
 .dialogs {
     height: 100%;
+    display:flex;
+    flex-direction: column;
+}
+
+.dialogs_col {
+    flex: 1 1 200px;
     overflow: auto;
 }
 
@@ -90,5 +96,5 @@
 
 .message__is_users {
     align-self: flex-end;
-    color: #5096E6;
+    color: #5096E6 !important;
 }

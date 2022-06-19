@@ -5,7 +5,20 @@ import Message from './Message/Message.jsx';
 
 class Messages extends React.Component {
   render() {
-    const { state } = this.props;
+    const { state, handlers } = this.props;
+
+    const messageTextArea = React.createRef();
+    
+    const sendMessageHandler = () => {
+      const messageToSend = messageTextArea.current.value;
+      handlers.sendMessageHandler(messageToSend);
+      messageTextArea.current.value = '';
+    }
+    const inputMessageHandler = () => {
+      const inputedText = messageTextArea.current.value;
+      handlers.inputMessageHandler(inputedText);
+    }
+
     const dialogElements = state.dialogs
       .map((dialog) =>
         <Dialog
@@ -24,7 +37,9 @@ class Messages extends React.Component {
     return (
       <div className={css.messages}>
         <div className={css.dialogs}>
-          {dialogElements}
+          <div className={css.dialogs_col}>
+            {dialogElements}
+          </div>
         </div>
         <div className={css.messages_block}>
           <div className={css.sent_messages}>
@@ -33,9 +48,9 @@ class Messages extends React.Component {
             </div>
           </div>
           <div className={css.new_message}>
-            <textarea className={css.textarea} placeholder='Write a message...'></textarea>
+            <textarea ref={messageTextArea} className={css.textarea} onChange={ inputMessageHandler } defaultValue={ state.messageInput } placeholder='Write a message...'></textarea>
             <div className={css.message_controls}>
-              <button className={css.send_button}>Send</button>
+              <button className={css.send_button} onClick={sendMessageHandler} >Send</button>
             </div>
           </div>
         </div>

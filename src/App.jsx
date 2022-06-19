@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { state } = this.props;
+    const { state, appHandlers } = this.props;
 
     return (
       <div className="app-wrapper">
@@ -39,7 +39,7 @@ class App extends React.Component {
               <Sidebar state={ state.sidebar }/>
             </nav>
             <main className="main">
-              <Content state={ state.content }/>
+              <Content state={ state.content } appHandlers={ appHandlers } />
             </main>
           </div>
         </BrowserRouter>
