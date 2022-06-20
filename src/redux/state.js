@@ -1,4 +1,5 @@
-import renderApp from "../render.js";
+let renderApp;
+
 const state = {
     content: {
         profilePage: {
@@ -104,14 +105,15 @@ const state = {
     }
 };
 
-const sendMessageHandler = (message) => {
+const sendMessageHandler = () => {
     const newMessage = {
-        id: 5,
-        text: message,
+        id: 6,
+        text: state.content.messagesPage.messageInput,
         isUsersMessage: true,
     };
 
     state.content.messagesPage.messages.push(newMessage);
+    state.content.messagesPage.messageInput = '';
 
     renderApp(state, appHandlers);
 };
@@ -128,4 +130,8 @@ const appHandlers = {
     }
 }
 
-export { state, appHandlers };
+const subscriber = (observer) => {
+    renderApp = observer;
+}
+
+export { state, appHandlers, subscriber };

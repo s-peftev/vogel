@@ -8,12 +8,7 @@ class Messages extends React.Component {
     const { state, handlers } = this.props;
 
     const messageTextArea = React.createRef();
-    
-    const sendMessageHandler = () => {
-      const messageToSend = messageTextArea.current.value;
-      handlers.sendMessageHandler(messageToSend);
-      messageTextArea.current.value = '';
-    }
+
     const inputMessageHandler = () => {
       const inputedText = messageTextArea.current.value;
       handlers.inputMessageHandler(inputedText);
@@ -48,9 +43,14 @@ class Messages extends React.Component {
             </div>
           </div>
           <div className={css.new_message}>
-            <textarea ref={messageTextArea} className={css.textarea} onChange={ inputMessageHandler } defaultValue={ state.messageInput } placeholder='Write a message...'></textarea>
+            <textarea ref={messageTextArea}
+              className={css.textarea}
+              onChange={inputMessageHandler}
+              value={state.messageInput}
+              placeholder='Write a message...'
+            />
             <div className={css.message_controls}>
-              <button className={css.send_button} onClick={sendMessageHandler} >Send</button>
+              <button className={css.send_button} onClick={handlers.sendMessageHandler} >Send</button>
             </div>
           </div>
         </div>

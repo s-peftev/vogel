@@ -1,6 +1,21 @@
-import renderApp from './render.js';
-import { state, appHandlers } from './redux/state.js';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+import { state, appHandlers, subscriber } from './redux/state.js';
 import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const renderApp = (state, appHandlers) => {
+    root.render(
+        <React.StrictMode>
+            <App state={state} appHandlers={appHandlers} />
+        </React.StrictMode>
+    );
+};
+
+subscriber(renderApp);
 
 renderApp(state, appHandlers);
 
