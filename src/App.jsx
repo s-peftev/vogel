@@ -28,18 +28,18 @@ class App extends React.Component {
   }
 
   render() {
-    const { state, appHandlers } = this.props;
+    const { state, handlers } = this.props;
 
     return (
       <div className="app-wrapper">
         <BrowserRouter>
-          <Header state={this.state} />
+          <Header state={ this.state } />
           <div className='main-row'>
             <nav className={this.state.burger.active ? 'sidebar sidebar_active' : 'sidebar'}>
-              <Sidebar state={ state.sidebar }/>
+              <Sidebar state={ state.sidebar } />
             </nav>
             <main className="main">
-              <Content state={ state.content } appHandlers={ appHandlers } />
+              <Content state={ state.content } handlers={ handlers.content } />
             </main>
           </div>
         </BrowserRouter>
