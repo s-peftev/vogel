@@ -28,7 +28,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { state, handlers } = this.props;
+    const { state, dispatch } = this.props;
 
     return (
       <div className="app-wrapper">
@@ -39,7 +39,7 @@ class App extends React.Component {
               <Sidebar state={ state.sidebar } />
             </nav>
             <main className="main">
-              <Content state={ state.content } handlers={ handlers.content } />
+              <Content state={ state.content } dispatch={ dispatch } />
             </main>
           </div>
         </BrowserRouter>

@@ -1,3 +1,7 @@
+export const inputMessageAction = (inputedText) => ({ type: 'INPUT_MESSAGE', inputedText });
+
+export const sendMessageAction = () => ({ type: 'SEND_MESSAGE' });
+
 class Store {
     constructor(observer) {
         this._state = {
@@ -105,40 +109,33 @@ class Store {
             },
         };
         this._observer = observer;
-        this._handlers = {
-            content: {
-                messagesPage: {
-                    inputMessageHandler: this.inputMessageHandler,
-                    sendMessageHandler: this.sendMessageHandler,
-                }
-            }
-        }
     };
+
+    _ACTIONS = {
+        'INPUT_MESSAGE': (action) => {
+            this._state.content.messagesPage.messageInput = action.inputedText;
+            this._observer(this);
+        },
+        'SEND_MESSAGE': () => {
+            const newMessage = {
+                id: 6,
+                text: this._state.content.messagesPage.messageInput,
+                isUsersMessage: true,
+            };
+    
+            this._state.content.messagesPage.messages.push(newMessage);
+            this._state.content.messagesPage.messageInput = '';
+    
+            this._observer(this);
+        }
+    }
 
     getState() {
         return this._state;
     };
 
-    getHandlers() {
-        return this._handlers;
-    };
-
-    inputMessageHandler = (inputedText) => {
-        this._state.content.messagesPage.messageInput = inputedText;
-        this._observer(this);
-    };
-
-    sendMessageHandler = () => {
-        const newMessage = {
-            id: 6,
-            text: this._state.content.messagesPage.messageInput,
-            isUsersMessage: true,
-        };
-
-        this._state.content.messagesPage.messages.push(newMessage);
-        this._state.content.messagesPage.messageInput = '';
-
-        this._observer(this);
+    dispatch = (action) => {
+        this._ACTIONS[action.type](action);
     };
 };
 

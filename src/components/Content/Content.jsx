@@ -8,11 +8,11 @@ import Settings from './Settings/Settings.jsx';
 
 class Content extends React.Component {
   render() {
-    const { state, handlers } = this.props;
+    const { state, dispatch } = this.props;
     return (
       <Routes>
         <Route path='/profile' element={ <Profile state={ state.profilePage }/> } />
-        <Route path='/messages/*' element={<Messages state={ state.messagesPage } handlers={ handlers.messagesPage } />} />
+        <Route path='/messages/*' element={<Messages state={ state.messagesPage } dispatch={ dispatch } />} />
         <Route path='/news' element={<News />} />
         <Route path='/music' element={<Music />} />
         <Route path='/settings' element={<Settings />} />
