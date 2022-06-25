@@ -2,7 +2,7 @@ import React from 'react';
 import css from './Messages.module.css';
 import Dialog from './Dialog/Dialog.jsx';
 import Message from './Message/Message.jsx';
-import { inputMessageAction, sendMessageAction } from '../../../redux/Store.js'
+import { inputMessageAction, sendMessageAction } from '../../../redux/messagesReducer.js'
 
 class Messages extends React.Component {
   render() {

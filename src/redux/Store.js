@@ -1,6 +1,6 @@
-export const inputMessageAction = (inputedText) => ({ type: 'INPUT_MESSAGE', inputedText });
-
-export const sendMessageAction = () => ({ type: 'SEND_MESSAGE' });
+import profileReducer from './profileReducer.js';
+import messagesReducer from './messagesReducer.js';
+import sidebarReducer from './sidebarReducer.js';
 
 class Store {
     constructor(observer) {
@@ -111,31 +111,16 @@ class Store {
         this._observer = observer;
     };
 
-    _ACTIONS = {
-        'INPUT_MESSAGE': (action) => {
-            this._state.content.messagesPage.messageInput = action.inputedText;
-            this._observer(this);
-        },
-        'SEND_MESSAGE': () => {
-            const newMessage = {
-                id: 6,
-                text: this._state.content.messagesPage.messageInput,
-                isUsersMessage: true,
-            };
-    
-            this._state.content.messagesPage.messages.push(newMessage);
-            this._state.content.messagesPage.messageInput = '';
-    
-            this._observer(this);
-        }
-    }
-
     getState() {
         return this._state;
     };
 
     dispatch = (action) => {
-        this._ACTIONS[action.type](action);
+        this._state.content.profilePage = profileReducer(this._state.content.profilePage, action);
+        this._state.content.messagesPage = messagesReducer(this._state.content.messagesPage, action);
+        this._state.content.sidebar = sidebarReducer(this._state.content.sidebar, action);
+
+        this._observer(this);
     };
 };
 
