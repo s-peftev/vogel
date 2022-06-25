@@ -1,18 +1,22 @@
 import React from 'react';
 import s from './Burger.module.css';
+import { toggleBurgerAction } from '../../../redux/headerReducer.js';
 
-class Burger extends React.Component {
-  render() {
-    const { state } = this.props;
-    return (
-      <div
-        onClick={state.burger.handleClick}
-        className={state.burger.active ? `${s.burger} ${s.active}` : s.burger}
-      >
-        <span className={s.line}></span>
-      </div>
-    );
+const Burger = (props) => {
+  const { state, dispatch } = props;
+
+  const toggleBurger = () => {
+    dispatch(toggleBurgerAction());
   }
-}
+
+  return (
+    <div
+      onClick={toggleBurger}
+      className={state.isActive ? `${s.burger} ${s.active}` : s.burger}
+    >
+      <span className={s.line}></span>
+    </div>
+  );
+};
 
 export default Burger;

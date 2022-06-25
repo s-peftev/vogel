@@ -1,10 +1,16 @@
+import headerReducer from './headerReducer.js';
 import profileReducer from './profileReducer.js';
 import messagesReducer from './messagesReducer.js';
 import sidebarReducer from './sidebarReducer.js';
 
 class Store {
-    constructor(observer) {
+    constructor() {
         this._state = {
+            header: {
+                burger_menu: {
+                    isActive: false,
+                }
+            },
             content: {
                 profilePage: {
                     user_info: {
@@ -108,7 +114,6 @@ class Store {
                 ]
             },
         };
-        this._observer = observer;
     };
 
     getState() {
@@ -116,12 +121,17 @@ class Store {
     };
 
     dispatch = (action) => {
+        this._state.header = headerReducer(this._state.header, action);
         this._state.content.profilePage = profileReducer(this._state.content.profilePage, action);
         this._state.content.messagesPage = messagesReducer(this._state.content.messagesPage, action);
         this._state.content.sidebar = sidebarReducer(this._state.content.sidebar, action);
 
         this._observer(this);
     };
+
+    subscribe = (observer) => {
+        this._observer = observer;
+    }
 };
 
 export default Store;

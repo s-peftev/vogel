@@ -1,16 +1,13 @@
-import React from 'react';
 import css from './Message.module.css';
 
-class Message extends React.Component {
-  render() {
-    const { parrentClass, text } = this.props;
+const Message = (props) => {
+  const { parrentClass, text } = props;
 
-    return (
-      <div className={`${parrentClass} ${css.message}`}>
-        { text }
-      </div>
-    );
-  }
-}
+  return (
+    <div className={`${parrentClass} ${css.message}`}>
+      {text}
+    </div>
+  );
+};
 
 export default Message;

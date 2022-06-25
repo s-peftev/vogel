@@ -14,7 +14,8 @@ const renderApp = (store) => {
         </React.StrictMode>
     );
 };
-const store = new Store(renderApp);
+const store = new Store();
+store.subscribe(renderApp);
 
 renderApp(store);
 
