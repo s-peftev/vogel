@@ -1,7 +1,7 @@
-import headerReducer from './headerReducer.js';
-import profileReducer from './profileReducer.js';
-import messagesReducer from './messagesReducer.js';
-import sidebarReducer from './sidebarReducer.js';
+import headerReducer from './redusers/headerReducer.js';
+import profileReducer from './redusers/profileReducer.js';
+import messagesReducer from './redusers/messagesReducer.js';
+import sidebarReducer from './redusers/sidebarReducer.js';
 
 class Store {
     constructor() {

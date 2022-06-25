@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import Store from './redux/Store.js';
+import store from './redux/ReduxStore.js';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,8 +14,10 @@ const renderApp = (store) => {
         </React.StrictMode>
     );
 };
-const store = new Store();
-store.subscribe(renderApp);
+
+store.subscribe(() => {
+    renderApp(store);
+});
 
 renderApp(store);
 

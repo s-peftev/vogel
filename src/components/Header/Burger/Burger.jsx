@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Burger.module.css';
-import { toggleBurgerAction } from '../../../redux/headerReducer.js';
+import { toggleBurgerAction } from '../../../redux/redusers/headerReducer.js';
 
 const Burger = (props) => {
   const { state, dispatch } = props;

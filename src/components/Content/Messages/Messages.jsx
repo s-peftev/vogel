@@ -1,7 +1,7 @@
 import css from './Messages.module.css';
 import Dialog from './Dialog/Dialog.jsx';
 import Message from './Message/Message.jsx';
-import { inputMessageAction, sendMessageAction } from '../../../redux/messagesReducer.js'
+import { inputMessageAction, sendMessageAction } from '../../../redux/redusers/messagesReducer.js'
 
 const Messages = (props) => {
   const { state, dispatch } = props;

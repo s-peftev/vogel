@@ -6,6 +6,10 @@ import Sidebar from './components/Sidebar/Sidebar.jsx';
 
 const App = (props) => {
   const { state, dispatch } = props;
+  const contentState = {
+    profilePage: state.profilePage,
+    messagesPage: state.messagesPage,
+  };
 
   return (
     <div className="app-wrapper">
@@ -18,7 +22,7 @@ const App = (props) => {
             <Sidebar state={state.sidebar} dispatch={dispatch} />
           </nav>
           <main className="main">
-            <Content state={state.content} dispatch={dispatch} />
+            <Content state={contentState} dispatch={dispatch} />
           </main>
         </div>
       </BrowserRouter>
