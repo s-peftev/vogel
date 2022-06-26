@@ -1,0 +1,12 @@
+.dialogs {
+  flex: 1 1 200px;
+  overflow: auto;
+}
+
+.dialog {
+  margin-bottom: 1rem;
+}
+
+.dialog:last-child {
+  margin-bottom: 0;
+}

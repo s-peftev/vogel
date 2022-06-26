@@ -44,6 +44,7 @@ const initialState = {
         },
     ],
     messageInput: '',
+    messageInputPlaceholder: 'Write a message...',
 }
 
 const messagesReducer = (state = initialState, action) => {

@@ -1,35 +1,43 @@
 import css from './UserCard.module.css';
 
 const UserCard = (props) => {
-  const { user_info } = props;
+  const {
+    photo,
+    name,
+    login,
+    birthday,
+    city,
+    website,
+    about,
+  } = props;
 
   return (
     <div className={css.user_card}>
       <div className={css.header}>
         <div className={css.photo}>
-          <img src={user_info.photo} alt='profile avatar'></img>
+          <img src={photo} alt='profile avatar'></img>
         </div>
         <div className={css.name}>
-          <h6 className={css.user_name}>{user_info.name}</h6>
-          <p className={css.login}>{user_info.login}</p>
+          <h6 className={css.user_name}>{name}</h6>
+          <p className={css.login}>{login}</p>
         </div>
       </div>
       <div className={css.body}>
         <p className={css.info}>
           <span className={css.key}>Birthday: </span>
-          <span className={css.value}>{user_info.birthday}</span>
+          <span className={css.value}>{birthday}</span>
         </p>
         <p className={css.info}>
           <span className={css.key}>City: </span>
-          <span className={css.value}>{user_info.city}</span>
+          <span className={css.value}>{city}</span>
         </p>
         <p className={css.info}>
           <span className={css.key}>Website: </span>
-          <span className={css.value}>{user_info.website}</span>
+          <span className={css.value}>{website}</span>
         </p>
         <p className={css.info}>
           <span className={css.key}>About: </span>
-          <span className={css.value}>{user_info.about}</span>
+          <span className={css.value}>{about}</span>
         </p>
       </div>
     </div>

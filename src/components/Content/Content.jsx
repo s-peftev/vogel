@@ -6,14 +6,14 @@ import Music from './Music/Music.jsx';
 import Settings from './Settings/Settings.jsx';
 
 const Content = (props) => {
-  const { state, dispatch } = props;
+  const { store } = props;
   return (
     <Routes>
-      <Route path='/profile' element={<Profile state={state.profilePage} />} />
-      <Route path='/messages/*' element={<Messages state={state.messagesPage} dispatch={dispatch} />} />
-      <Route path='/news' element={<News />} />
-      <Route path='/music' element={<Music />} />
-      <Route path='/settings' element={<Settings />} />
+      <Route path='/profile' element={<Profile store={store} />} />
+      <Route path='/messages/*' element={<Messages store={store} />} />
+      <Route path='/news' element={<News store={store} />} />
+      <Route path='/music' element={<Music store={store} />} />
+      <Route path='/settings' element={<Settings store={store} />} />
     </Routes>
   );
 };

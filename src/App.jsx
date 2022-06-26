@@ -5,24 +5,21 @@ import Content from './components/Content/Content.jsx';
 import Sidebar from './components/Sidebar/Sidebar.jsx';
 
 const App = (props) => {
-  const { state, dispatch } = props;
-  const contentState = {
-    profilePage: state.profilePage,
-    messagesPage: state.messagesPage,
-  };
+  const { store } = props;
+  const state = store.getState();
 
   return (
     <div className="app-wrapper">
       <BrowserRouter>
-        <Header state={state.header} dispatch={dispatch} />
+        <Header store={store} />
         <div className='main-row'>
           <nav
             className={state.header.burger_menu.isActive ? 'sidebar sidebar_active' : 'sidebar'}
           >
-            <Sidebar state={state.sidebar} dispatch={dispatch} />
+            <Sidebar store={store} />
           </nav>
           <main className="main">
-            <Content state={contentState} dispatch={dispatch} />
+            <Content store={store} />
           </main>
         </div>
       </BrowserRouter>

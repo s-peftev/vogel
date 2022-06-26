@@ -1,16 +1,17 @@
-import UserCard from './UserCard/UserCard.jsx';
-import Posts from './Posts/Posts.jsx';
+import UserCardContainer from './UserCard/UserCardContainer.jsx';
+import PostsContainer from './Posts/PostsContainer.jsx';
 import css from './Profile.module.css';
 
 const Profile = (props) => {
-  const { state } = props;
+  const { store } = props;
+
   return (
     <div className={css.profile}>
       <div className={css.user_card}>
-        <UserCard user_info={state.user_info} />
+        <UserCardContainer store={store} />
       </div>
       <div className={css.posts}>
-        <Posts posts={state.posts} />
+        <PostsContainer store={store} />
       </div>
     </div>
   );

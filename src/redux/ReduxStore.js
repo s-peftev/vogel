@@ -4,13 +4,13 @@ import messagesReducer from './redusers/messagesReducer.js';
 import profileReducer from './redusers/profileReducer.js';
 import sidebarReducer from './redusers/sidebarReducer.js';
 
-const redusers = combineReducers({
+const reducers = combineReducers({
     header: headerReduser,
     sidebar: sidebarReducer,
     profilePage: profileReducer,
     messagesPage: messagesReducer,
 })
 
-const store = createStore(redusers);
+const store = createStore(reducers);
 
 export default store;
