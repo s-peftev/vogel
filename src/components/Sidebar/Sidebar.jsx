@@ -2,8 +2,7 @@ import { NavLink } from 'react-router-dom';
 import FriendsContainer from './Friends/FriendsContainer.jsx';
 import css from './Sidebar.module.css';
 
-const Sidebar = (props) => {
-  const { store } = props;
+const Sidebar = () => {
 
   return (
     <>
@@ -59,7 +58,7 @@ const Sidebar = (props) => {
         </NavLink>
       </div>
       <div className={css.friends}>
-        <FriendsContainer store={store} />
+        <FriendsContainer />
       </div>
     </>
   );

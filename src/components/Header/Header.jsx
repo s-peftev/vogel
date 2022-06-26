@@ -3,7 +3,6 @@ import BurgerContainer from './Burger/BurgerContainer.jsx';
 import s from './Header.module.css';
 
 const Header = (props) => {
-  const { store } = props;
 
   return (
     <div className={s.header}>
@@ -11,7 +10,7 @@ const Header = (props) => {
         <img src='https://logodix.com/logo/64439.png' alt="logo"></img>
       </NavLink>
       <div className={s.burger}>
-        <BurgerContainer store={store} />
+        <BurgerContainer />
       </div>
     </div>
   );

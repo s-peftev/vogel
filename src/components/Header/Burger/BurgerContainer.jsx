@@ -1,16 +1,21 @@
 import Burger from './Burger.jsx';
+import { connect } from 'react-redux';
 import { toggleBurgerAction } from '../../../redux/redusers/headerReducer.js';
 
-const BurgerContainer = (props) => {
-  const { store } = props;
-  const state = store.getState();
-  const isActive = state.header.burger_menu.isActive;
-
-  const toggleBurger = () => {
-    store.dispatch(toggleBurgerAction());
-  }
-
-  return (<Burger isActive={isActive} toggleBurger={toggleBurger}/>);
+const mapStateToProps = (state) => {
+  return {
+    isActive: state.header.burger_menu.isActive,
+  };
 };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    toggleBurger: () => {
+      dispatch(toggleBurgerAction());
+    },
+  };
+};
+
+const BurgerContainer = connect(mapStateToProps, mapDispatchToProps)(Burger);
 
 export default BurgerContainer;

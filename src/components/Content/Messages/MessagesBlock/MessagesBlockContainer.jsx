@@ -1,30 +1,27 @@
+import { connect } from 'react-redux';
 import MessagesBlock from './MessagesBlock.jsx';
 import { inputMessageAction, sendMessageAction } from '../../../../redux/redusers/messagesReducer.js';
 
-const MessagesBlockContainer = (props) => {
-  const { store } = props;
-  const state = store.getState();
-  const messages = state.messagesPage.messages;
-  const messageInput = state.messagesPage.messageInput;
-  const messageInputPlaceholder = state.messagesPage.messageInputPlaceholder;
-
-  const inputMessageHandler = (e) => {
-    const inputedText = e.target.value;
-    store.dispatch(inputMessageAction(inputedText));
+const mapStateToProps = (state) => {
+  return {
+    messages: state.messagesPage.messages,
+    messageInput: state.messagesPage.messageInput,
+    messageInputPlaceholder: state.messagesPage.messageInputPlaceholder,
   };
-  const sendMessageHandler = () => {
-    store.dispatch(sendMessageAction());
-  };
-
-  return (
-    <MessagesBlock
-      messages={messages}
-      messageInput={messageInput}
-      messageInputPlaceholder={messageInputPlaceholder}
-      inputMessageHandler={inputMessageHandler}
-      sendMessageHandler={sendMessageHandler}
-    />
-  );
 };
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    inputMessageHandler: (e) => {
+      const inputedText = e.target.value;
+      dispatch(inputMessageAction(inputedText));
+    },
+    sendMessageHandler: () => {
+      dispatch(sendMessageAction());
+    },
+  };
+};
+
+const MessagesBlockContainer = connect(mapStateToProps, mapDispatchToProps)(MessagesBlock);
 
 export default MessagesBlockContainer;

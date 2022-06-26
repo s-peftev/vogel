@@ -2,16 +2,15 @@ import css from './Messages.module.css';
 import DialogsContainer from './Dialogs/DialogsContainer.jsx';
 import MessagesBlockContainer from './MessagesBlock/MessagesBlockContainer.jsx';
 
-const Messages = (props) => {
-  const { store } = props;
+const Messages = () => {
 
   return (
     <div className={css.messages}>
       <div className={css.dialogs}>
-        <DialogsContainer store={store} />
+        <DialogsContainer />
       </div>
       <div className={css.messages_block}>
-        <MessagesBlockContainer store={store} />
+        <MessagesBlockContainer />
       </div>
     </div>
   );
