@@ -48,21 +48,24 @@ const initialState = {
 }
 
 const messagesReducer = (state = initialState, action) => {
-    const newState = {...state};
     switch (action.type) {
         case ACTIONS.INPUT_MESSAGE:
-            newState.messageInput = action.inputedText;
-            return newState;
+            return {
+                ...state,
+                messageInput: action.inputedText,
+            };
         case ACTIONS.SEND_MESSAGE:
-            newState.messages = [...state.messages];
             const newMessage = {
                 id: 6,
                 text: state.messageInput,
                 isUsersMessage: true,
             };
-            newState.messages.push(newMessage);
-            newState.messageInput = '';
-            return newState;
+
+            return {
+                ...state,
+                messages: [...state.messages, newMessage],
+                messageInput: '',
+            };
         default:
             return state;
     }
