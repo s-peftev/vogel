@@ -1,4 +1,4 @@
-import UserCardContainer from './UserCard/UserCardContainer.jsx';
+import ProfileCardContainer from './ProfileCard/ProfileCardContainer.jsx';
 import PostsContainer from './Posts/PostsContainer.jsx';
 import css from './Profile.module.css';
 
@@ -6,8 +6,8 @@ const Profile = () => {
 
   return (
     <div className={css.profile}>
-      <div className={css.user_card}>
-        <UserCardContainer />
+      <div className={css.pofile_card}>
+        <ProfileCardContainer />
       </div>
       <div className={css.posts}>
         <PostsContainer />

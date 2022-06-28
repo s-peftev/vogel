@@ -1,6 +1,6 @@
-import css from './UserCard.module.css';
+import css from './ProfileCard.module.css';
 
-const UserCard = (props) => {
+const ProfileCard = (props) => {
   const {
     photo,
     name,
@@ -12,7 +12,7 @@ const UserCard = (props) => {
   } = props;
 
   return (
-    <div className={css.user_card}>
+    <div className={css.profile_card}>
       <div className={css.header}>
         <div className={css.photo}>
           <img src={photo} alt='profile avatar'></img>
@@ -44,4 +44,4 @@ const UserCard = (props) => {
   );
 };
 
-export default UserCard;
+export default ProfileCard;

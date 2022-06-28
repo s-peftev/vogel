@@ -56,6 +56,16 @@ const Sidebar = () => {
           <img src="https://img.icons8.com/ios-filled/24/C9D1D9/settings--v1.png" alt='' />
           <h2>Settings</h2>
         </NavLink>
+
+        <NavLink
+          className={({ isActive }) => {
+            return isActive ? `${css.link} ${css.active}` : css.link;
+          }}
+          to="/users"
+        >
+          <img src="https://img.icons8.com/ios-filled/24/C9D1D9/find-user-male.png" alt='' />
+          <h2>Users</h2>
+        </NavLink>
       </div>
       <div className={css.friends}>
         <FriendsContainer />

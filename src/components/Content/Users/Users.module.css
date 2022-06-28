@@ -1,0 +1,11 @@
+.user_card {
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    max-width: 1000px;
+    max-height: 11rem;
+    overflow: hidden;
+}
+
+.user_card:last-child {
+    margin-bottom: 0;
+}

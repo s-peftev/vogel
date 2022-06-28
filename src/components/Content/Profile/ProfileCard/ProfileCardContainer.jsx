@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import UserCard from './UserCard.jsx';
+import ProfileCard from './ProfileCard.jsx';
 
 const mapStateToProps = (state) => {
   const userInfo = state.profilePage.user_info;
   return {...userInfo};
 };
 
-const UserCardContainer = connect(mapStateToProps)(UserCard);
+const ProfileCardContainer = connect(mapStateToProps)(ProfileCard);
 
-export default UserCardContainer;
+export default ProfileCardContainer;
