@@ -25,7 +25,7 @@ const UserCard = (props) => {
           </div>
           <div className={css.following}>
             {
-              followed ?
+              followed == true ?
                 <button
                   className={css.following_btn + ' ' + css.unfollow}
                   onClick={() => { unfollowUser(id) }} >Unfollow
