@@ -1,11 +1,10 @@
+import React from 'react';
 import s from './Music.module.css';
 
-const Music = (props) => {
-  return (
+const Music = () => (
     <div className={s.music}>
       Music HERE
     </div>
-  );
-};
+);
 
 export default Music;

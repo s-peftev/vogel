@@ -3,7 +3,7 @@ import ProfileCard from './ProfileCard.jsx';
 
 const mapStateToProps = (state) => {
   const userInfo = state.profilePage.user_info;
-  return {...userInfo};
+  return { ...userInfo };
 };
 
 const ProfileCardContainer = connect(mapStateToProps)(ProfileCard);

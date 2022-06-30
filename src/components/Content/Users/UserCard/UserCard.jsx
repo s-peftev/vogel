@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import css from './UserCard.module.css';
 
 const UserCard = (props) => {
@@ -25,14 +27,14 @@ const UserCard = (props) => {
           </div>
           <div className={css.following}>
             {
-              followed == true ?
-                <button
-                  className={css.following_btn + ' ' + css.unfollow}
-                  onClick={() => { unfollowUser(id) }} >Unfollow
-                </button> :
-                <button
-                  className={css.following_btn + ' ' + css.follow}
-                  onClick={() => { followUser(id) }} >Follow
+              followed
+                ? <button
+                  className={`${css.following_btn} ${css.unfollow}`}
+                  onClick={() => { unfollowUser(id); }} >Unfollow
+                </button>
+                : <button
+                  className={`${css.following_btn} ${css.follow}`}
+                  onClick={() => { followUser(id); }} >Follow
                 </button>
             }
           </div>
@@ -43,6 +45,17 @@ const UserCard = (props) => {
       </div>
     </div>
   );
+};
+
+UserCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  photo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  login: PropTypes.string.isRequired,
+  about: PropTypes.string.isRequired,
+  followed: PropTypes.bool.isRequired,
+  followUser: PropTypes.func.isRequired,
+  unfollowUser: PropTypes.func.isRequired,
 };
 
 export default UserCard;

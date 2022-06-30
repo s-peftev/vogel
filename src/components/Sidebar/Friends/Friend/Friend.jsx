@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import css from './Friend.module.css';
 
 const Friend = (props) => {
@@ -12,6 +14,11 @@ const Friend = (props) => {
       </h3>
     </div>
   );
+};
+
+Friend.propTypes = {
+  name: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
 };
 
 export default Friend;

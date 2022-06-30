@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import css from './ProfileCard.module.css';
 
 const ProfileCard = (props) => {
@@ -42,6 +44,16 @@ const ProfileCard = (props) => {
       </div>
     </div>
   );
+};
+
+ProfileCard.propTypes = {
+  photo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  login: PropTypes.string.isRequired,
+  birthday: PropTypes.string.isRequired,
+  city: PropTypes.string.isRequired,
+  website: PropTypes.string.isRequired,
+  about: PropTypes.string.isRequired,
 };
 
 export default ProfileCard;

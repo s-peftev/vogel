@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import css from './MessagesBlock.module.css';
 import Message from './Message/Message.jsx';
 
@@ -11,12 +13,11 @@ const MessagesBlock = (props) => {
   } = props;
 
   const messageElements = messages
-    .map((message) =>
-      <Message
+    .map((message) => <Message
         key={message.id}
         parrentClass={message.isUsersMessage ? `${css.message} ${css.message__is_users}` : css.message}
         {...message}
-      />)
+      />);
 
   return (
     <>
@@ -41,6 +42,14 @@ const MessagesBlock = (props) => {
       </div>
     </>
   );
+};
+
+MessagesBlock.propTypes = {
+  messages: PropTypes.array.isRequired,
+  messageInput: PropTypes.string.isRequired,
+  messageInputPlaceholder: PropTypes.string.isRequired,
+  inputMessageHandler: PropTypes.func.isRequired,
+  sendMessageHandler: PropTypes.func.isRequired,
 };
 
 export default MessagesBlock;

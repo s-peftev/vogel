@@ -1,16 +1,13 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import FriendsContainer from './Friends/FriendsContainer.jsx';
 import css from './Sidebar.module.css';
 
-const Sidebar = () => {
-
-  return (
+const Sidebar = () => (
     <>
       <div className={css.nav}>
         <NavLink
-          className={({ isActive }) => {
-            return isActive ? `${css.link} ${css.active}` : css.link;
-          }}
+          className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}
           to="/profile"
         >
           <img src="https://img.icons8.com/ios-filled/24/C9D1D9/home.png" alt='' />
@@ -18,9 +15,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => {
-            return isActive ? `${css.link} ${css.active}` : css.link;
-          }}
+          className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}
           to="/messages"
         >
           <img src="https://img.icons8.com/ios-filled/24/C9D1D9/chat-message--v1.png" alt='' />
@@ -28,9 +23,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => {
-            return isActive ? `${css.link} ${css.active}` : css.link;
-          }}
+          className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}
           to="/news"
         >
           <img src="https://img.icons8.com/ios-filled/24/C9D1D9/news.png" alt='' />
@@ -38,9 +31,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => {
-            return isActive ? `${css.link} ${css.active}` : css.link;
-          }}
+          className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}
           to="/music"
         >
           <img src="https://img.icons8.com/ios-glyphs/24/C9D1D9/apple-music.png" alt='' />
@@ -48,9 +39,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => {
-            return isActive ? `${css.link} ${css.active}` : css.link;
-          }}
+          className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}
           to="/settings"
         >
           <img src="https://img.icons8.com/ios-filled/24/C9D1D9/settings--v1.png" alt='' />
@@ -58,9 +47,7 @@ const Sidebar = () => {
         </NavLink>
 
         <NavLink
-          className={({ isActive }) => {
-            return isActive ? `${css.link} ${css.active}` : css.link;
-          }}
+          className={({ isActive }) => (isActive ? `${css.link} ${css.active}` : css.link)}
           to="/users"
         >
           <img src="https://img.icons8.com/ios-filled/24/C9D1D9/find-user-male.png" alt='' />
@@ -71,7 +58,6 @@ const Sidebar = () => {
         <FriendsContainer />
       </div>
     </>
-  );
-};
+);
 
 export default Sidebar;

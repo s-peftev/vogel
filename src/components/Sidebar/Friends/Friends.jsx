@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import Friend from './Friend/Friend.jsx';
 import css from './Friends.module.css';
 
@@ -13,6 +15,10 @@ const Friends = (props) => {
       </div>
     </>
   );
+};
+
+Friends.propTypes = {
+  friends: PropTypes.array.isRequired,
 };
 
 export default Friends;

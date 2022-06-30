@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import Counters from './Counters/Counters.jsx';
 import css from './Post.module.css';
 
@@ -9,8 +11,8 @@ const Post = (props) => {
     login,
     date,
     text,
-    likes_count,
-    comments_count
+    likesCount,
+    commentsCount,
   } = props;
 
   return (
@@ -29,10 +31,21 @@ const Post = (props) => {
         <div className={css.content}>
           <p>{text}</p>
         </div>
-        <Counters likes_count={likes_count} comments_count={comments_count} />
+        <Counters likesCount={likesCount} commentsCount={commentsCount} />
       </div>
     </div>
   );
+};
+
+Post.propTypes = {
+  parrentClass: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  login: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  likesCount: PropTypes.number.isRequired,
+  commentsCount: PropTypes.number.isRequired,
 };
 
 export default Post;

@@ -1,11 +1,10 @@
+import React from 'react';
 import s from './Settings.module.css';
 
-const Settings = (props) => {
-  return (
+const Settings = () => (
     <div className={s.settings}>
       Settings HERE
     </div>
-  );
-};
+);
 
 export default Settings;

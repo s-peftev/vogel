@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import './App.css';
 import Header from './components/Header/Header.jsx';
@@ -5,9 +7,9 @@ import Content from './components/Content/Content.jsx';
 import Sidebar from './components/Sidebar/Sidebar.jsx';
 
 const App = (props) => {
-  const store = props.store;
+  const { store } = props;
   const state = store.getState();
-// перерисовка сайдбара по нажатию бургера???
+  // перерисовка сайдбара по нажатию бургера???
   return (
     <Provider store={store} >
       <div className="app-wrapper">
@@ -25,6 +27,10 @@ const App = (props) => {
       </div>
     </Provider>
   );
+};
+
+App.propTypes = {
+  store: PropTypes.object.isRequired,
 };
 
 export default App;

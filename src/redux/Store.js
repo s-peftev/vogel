@@ -1,4 +1,4 @@
-import headerReducer from './redusers/headerReducer.js';
+/* import headerReducer from './redusers/headerReducer.js';
 import profileReducer from './redusers/profileReducer.js';
 import messagesReducer from './redusers/messagesReducer.js';
 import sidebarReducer from './redusers/sidebarReducer.js';
@@ -20,7 +20,10 @@ class Store {
                         birthday: '25.05.1986',
                         city: 'Amsterdam',
                         website: 'none',
-                        about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ipsa quam tempore unde totam ipsum quis aspernatur et reprehenderit ad iure aliquam dicta, officia, praesentium illum cum nisi! Excepturi, a!',
+                        about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Delectus ipsa quam tempore unde totam ipsum quis aspernatur et
+                         reprehenderit ad iure aliquam dicta, officia, praesentium illum
+                         cum nisi! Excepturi, a!',
                         photo: 'https://images.squarespace-cdn.com/content/v1/5b6a682125bf02f85e285689/1546478840771-HG0TE1RQUIZGUHHY2TKW/edited.jpg?format=1000w',
                     },
                     posts: [
@@ -30,7 +33,8 @@ class Store {
                             login: '@gustav-header',
                             photo: 'https://images.squarespace-cdn.com/content/v1/5b6a682125bf02f85e285689/1546478840771-HG0TE1RQUIZGUHHY2TKW/edited.jpg?format=1000w',
                             date: '30 May 2022',
-                            text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore quo culpa repellat.',
+                            text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Tempore quo culpa repellat.',
                             likes_count: '42',
                             comments_count: '2',
                         },
@@ -123,7 +127,8 @@ class Store {
     dispatch = (action) => {
         this._state.header = headerReducer(this._state.header, action);
         this._state.content.profilePage = profileReducer(this._state.content.profilePage, action);
-        this._state.content.messagesPage = messagesReducer(this._state.content.messagesPage, action);
+        this._state.content.messagesPage =
+         messagesReducer(this._state.content.messagesPage, action);
         this._state.content.sidebar = sidebarReducer(this._state.content.sidebar, action);
 
         this._observer(this);
@@ -134,4 +139,4 @@ class Store {
     }
 };
 
-export default Store;
+export default Store; */
