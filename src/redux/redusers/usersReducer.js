@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable default-param-last */
 const ACTIONS = {
   SET_USERS: 'SET_USERS',
@@ -10,7 +11,7 @@ const ACTIONS = {
 const initialState = {
   users: [],
   currentPage: 1,
-  usersPerPage: 3,
+  usersPerPage: 1,
   totalUsersCount: 0,
 };
 

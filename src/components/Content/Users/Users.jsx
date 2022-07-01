@@ -14,11 +14,14 @@ class Users extends React.Component {
   }
 
   pageOnClick = (pageNumber) => {
-    axios.get(`https://git-talks-server.herokuapp.com/api/users?page=${pageNumber}&count=${this.props.usersPerPage}`)
-      .then((response) => {
-        this.props.setCurrentPage(pageNumber);
-        this.props.setUsers(response.data.items.data);
-      });
+    const totalPages = Math.ceil(this.props.totalUsersCount / this.props.usersPerPage);
+    if (pageNumber > 0 && pageNumber <= totalPages) {
+      axios.get(`https://git-talks-server.herokuapp.com/api/users?page=${pageNumber}&count=${this.props.usersPerPage}`)
+        .then((response) => {
+          this.props.setCurrentPage(pageNumber);
+          this.props.setUsers(response.data.items.data);
+        });
+    }
   };
 
   render() {
@@ -29,11 +32,19 @@ class Users extends React.Component {
     }
     return <div>
       <div className={css.paginator}>
+        <div
+          className={css.paginator_btn}
+          onClick={() => { this.pageOnClick(this.props.currentPage - 1); }}
+        >{'<'}</div>
         {pages.map((page) => <div
           key={`page_${page}`}
-          className={this.props.currentPage === page ? `${css.page_number} ${css.page_number__active}` : css.page_number}
+          className={this.props.currentPage === page ? `${css.paginator_btn} ${css.paginator_btn__active}` : css.paginator_btn}
           onClick={() => { this.pageOnClick(page); }}
         >{page}</div>)}
+        <div
+          className={css.paginator_btn}
+          onClick={() => { this.pageOnClick(this.props.currentPage + 1); }}
+        >{'>'}</div>
       </div>
       {this.props.users.map((user) => <div className={css.user_card} key={user.id}>
         <UserCard
