@@ -11,7 +11,7 @@ const ACTIONS = {
 const initialState = {
   users: [],
   currentPage: 1,
-  usersPerPage: 1,
+  usersPerPage: 3,
   totalUsersCount: 0,
 };
 
