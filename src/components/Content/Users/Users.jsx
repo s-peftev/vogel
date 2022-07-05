@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import UsersPaginator from './UsersPaginator/UsersPaginator.jsx';
 import UserCard from './UserCard/UserCard.jsx';
+import DashLoader from '../../Common/Preloaders/DashLoader/DashLoader.jsx';
 import css from './Users.module.css';
 
 const Users = (props) => {
@@ -20,7 +21,8 @@ const Users = (props) => {
       />
     </div>
     <div className={css.user_cards_container}>
-      {props.users.map((user) => <div className={css.user_card} key={user.id}>
+      {props.isFetching ? <DashLoader />
+        : props.users.map((user) => <div className={css.user_card} key={user.id}>
         <UserCard
           key={user.id}
           {...user}
@@ -37,6 +39,7 @@ Users.propTypes = {
   followUser: PropTypes.func.isRequired,
   unfollowUser: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
   currentPage: PropTypes.number.isRequired,
   usersPerPage: PropTypes.number.isRequired,
   totalUsersCount: PropTypes.number.isRequired,

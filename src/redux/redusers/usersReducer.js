@@ -2,6 +2,7 @@
 /* eslint-disable default-param-last */
 const ACTIONS = {
   SET_USERS: 'SET_USERS',
+  TOGGLE_IS_FETCHING: 'TOGGLE_IS_FETCHING',
   FOLLOW_USER: 'FOLLOW_USER',
   UNFOLLOW_USER: 'UNFOLLOW_USER',
   SET_CURRENT_PAGE: 'SET_CURRENT_PAGE',
@@ -10,6 +11,7 @@ const ACTIONS = {
 
 const initialState = {
   users: [],
+  isFetching: false,
   currentPage: 1,
   usersPerPage: 3,
   totalUsersCount: 0,
@@ -21,6 +23,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: [...action.users],
+      };
+    case ACTIONS.TOGGLE_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
       };
     case ACTIONS.SET_CURRENT_PAGE:
       return {
@@ -63,18 +70,22 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const setUsersAction = (users) => ({ type: ACTIONS.SET_USERS, users });
+export const setUsers = (users) => ({ type: ACTIONS.SET_USERS, users });
 
-export const setCurrentPageAction = (currentPage) => ({
+export const toggleIsFetching = (isFetching) => ({
+  type: ACTIONS.TOGGLE_IS_FETCHING, isFetching,
+});
+
+export const setCurrentPage = (currentPage) => ({
   type: ACTIONS.SET_CURRENT_PAGE, currentPage,
 });
 
-export const setTotalUsersCountAction = (totalUsersCount) => ({
+export const setTotalUsersCount = (totalUsersCount) => ({
   type: ACTIONS.SET_TOTAL_USERS_COUNT, totalUsersCount,
 });
 
-export const followUserAction = (userID) => ({ type: ACTIONS.FOLLOW_USER, userID });
+export const followUser = (userID) => ({ type: ACTIONS.FOLLOW_USER, userID });
 
-export const unfollowUserAction = (userID) => ({ type: ACTIONS.UNFOLLOW_USER, userID });
+export const unfollowUser = (userID) => ({ type: ACTIONS.UNFOLLOW_USER, userID });
 
 export default usersReducer;

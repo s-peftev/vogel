@@ -21,6 +21,6 @@ const headerReducer = (state = initialState, action) => {
   }
 };
 
-export const toggleBurgerAction = () => ({ type: ACTIONS.TOGGLE_BURGER });
+export const toggleBurger = () => ({ type: ACTIONS.TOGGLE_BURGER });
 
 export default headerReducer;

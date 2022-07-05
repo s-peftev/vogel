@@ -8,9 +8,14 @@ const MessagesBlock = (props) => {
     messages,
     messageInput,
     messageInputPlaceholder,
-    inputMessageHandler,
-    sendMessageHandler,
+    inputMessage,
+    sendMessage,
   } = props;
+
+  const inputMessageHandler = (e) => {
+    const inputedText = e.target.value;
+    inputMessage(inputedText);
+  };
 
   const messageElements = messages
     .map((message) => <Message
@@ -36,7 +41,7 @@ const MessagesBlock = (props) => {
         <div className={css.message_controls}>
           <button
             className={css.send_button}
-            onClick={sendMessageHandler}
+            onClick={sendMessage}
           >Send</button>
         </div>
       </div>
@@ -48,8 +53,8 @@ MessagesBlock.propTypes = {
   messages: PropTypes.array.isRequired,
   messageInput: PropTypes.string.isRequired,
   messageInputPlaceholder: PropTypes.string.isRequired,
-  inputMessageHandler: PropTypes.func.isRequired,
-  sendMessageHandler: PropTypes.func.isRequired,
+  inputMessage: PropTypes.func.isRequired,
+  sendMessage: PropTypes.func.isRequired,
 };
 
 export default MessagesBlock;

@@ -73,7 +73,7 @@ const messagesReducer = (state = initialState, action) => {
   }
 };
 
-export const inputMessageAction = (inputedText) => ({ type: ACTIONS.INPUT_MESSAGE, inputedText });
-export const sendMessageAction = () => ({ type: ACTIONS.SEND_MESSAGE });
+export const inputMessage = (inputedText) => ({ type: ACTIONS.INPUT_MESSAGE, inputedText });
+export const sendMessage = () => ({ type: ACTIONS.SEND_MESSAGE });
 
 export default messagesReducer;
