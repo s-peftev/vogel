@@ -7,7 +7,9 @@ import css from './Posts.module.css';
 const Posts = (props) => {
   const { posts } = props;
   const postElements = posts
-    .map((post) => <Post key={post.id} parrentClass={css.post} {...post} />);
+    .map((post) => <div key={post.id} className={css.post}>
+      <Post key={post.id} postUserInfo={props.postUserInfo} {...post} />
+    </div>);
 
   return (
     <div className={css.posts}>
@@ -19,6 +21,7 @@ const Posts = (props) => {
 
 Posts.propTypes = {
   posts: PropTypes.array.isRequired,
+  postUserInfo: PropTypes.object.isRequired,
 };
 
 export default Posts;

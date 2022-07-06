@@ -5,10 +5,7 @@ import css from './Post.module.css';
 
 const Post = (props) => {
   const {
-    parrentClass,
-    photo,
-    name,
-    login,
+    postUserInfo,
     date,
     text,
     likesCount,
@@ -16,15 +13,15 @@ const Post = (props) => {
   } = props;
 
   return (
-    <div className={`${parrentClass} ${css.post}`}>
+    <div className={css.post}>
       <div className={css.photo}>
-        <img src={photo} alt='post avatar'></img>
+        <img src={postUserInfo.userPhoto} alt='post avatar'></img>
       </div>
       <div className={css.body}>
         <div className={css.header}>
           <div className={css.user}>
-            <h6 className={css.name}>{name}</h6>
-            <p className={css.login}>{login}</p>
+            <h6 className={css.name}>{postUserInfo.userName}</h6>
+            <p className={css.login}>{postUserInfo.userLogin}</p>
           </div>
           <p className={css.date}>{date}</p>
         </div>
@@ -38,10 +35,7 @@ const Post = (props) => {
 };
 
 Post.propTypes = {
-  parrentClass: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  login: PropTypes.string.isRequired,
+  postUserInfo: PropTypes.object.isRequired,
   date: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   likesCount: PropTypes.number.isRequired,
