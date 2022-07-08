@@ -1,6 +1,15 @@
 .profile {
+    position:relative;
+    height: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .pofile_card {

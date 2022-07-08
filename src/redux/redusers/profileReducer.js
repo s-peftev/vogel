@@ -1,16 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable default-param-last */
+const ACTIONS = {
+  SET_PROFILE_INFO: 'SET_PROFILE_INFO',
+  TOGGLE_PROFILE_INFO_IS_FETCHING: 'TOGGLE_PROFILE_INFO_IS_FETCHING',
+};
+
 const initialState = {
-  userInfo: {
-    id: 12345,
-    name: 'Gustav Header',
-    login: '@gustav_header',
-    birthday: '25.05.1986',
-    city: 'Amsterdam',
-    website: 'none',
-    about: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ipsa quam tempore unde totam ipsum quis aspernatur et reprehenderit ad iure aliquam dicta, officia, praesentium illum cum nisi! Excepturi, a!',
-    photo: 'https://images.squarespace-cdn.com/content/v1/5b6a682125bf02f85e285689/1546478840771-HG0TE1RQUIZGUHHY2TKW/edited.jpg?format=1000w',
-  },
+  isFetching: false,
+  profileInfo: {},
   posts: [
     {
       id: 1,
@@ -36,6 +33,26 @@ const initialState = {
   ],
 };
 
-const profileReducer = (state = initialState, action) => state;
+const profileReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ACTIONS.SET_PROFILE_INFO:
+      return {
+        ...state,
+        profileInfo: { ...action.profileInfo },
+      };
+    case ACTIONS.TOGGLE_PROFILE_INFO_IS_FETCHING:
+      return {
+        ...state,
+        isFetching: action.isFetching,
+      };
+    default:
+      return state;
+  }
+};
+
+export const setProfileInfo = (profileInfo) => ({ type: ACTIONS.SET_PROFILE_INFO, profileInfo });
+export const toggleProfileInfoIsFetching = (isFetching) => ({
+  type: ACTIONS.TOGGLE_PROFILE_INFO_IS_FETCHING, isFetching,
+});
 
 export default profileReducer;
