@@ -16,6 +16,7 @@ const App = (props) => {
     baseURL: 'https://git-talks-server.herokuapp.com',
     headers: {
       'X-Requested-With': 'XMLHttpReques',
+      Accept: 'application/json',
     },
     withCredentials: true,
   });
