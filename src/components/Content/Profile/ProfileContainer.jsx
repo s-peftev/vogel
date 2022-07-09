@@ -1,7 +1,7 @@
 /* eslint-disable no-debugger */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import * as axios from 'axios';
 import { connect } from 'react-redux';
 import Profile from './Profile.jsx';
@@ -11,7 +11,7 @@ import {
 } from '../../../redux/redusers/profileReducer';
 
 const ProfileContainer = (props) => {
-  // const { userId } = useParams();
+  const { userId } = useParams();
 
   const http = axios.create({
     baseURL: 'https://git-talks-server.herokuapp.com',
@@ -21,7 +21,7 @@ const ProfileContainer = (props) => {
     credentials: true,
   });
 
-  async function getUser() {
+  async function logIn() {
     const csrf = await http.get('/sanctum/csrf-cookie');
     console.log('csrf = ', csrf);
     debugger;
@@ -33,18 +33,19 @@ const ProfileContainer = (props) => {
     debugger;
   }
 
-  useEffect(() => {
-    getUser();
-  }, []);
-
   /* useEffect(() => {
+    logIn();
+  }, []); */
+
+  useEffect(() => {
     props.toggleProfileInfoIsFetching(true);
+    logIn();
     axios.get(`https://git-talks-server.herokuapp.com/api/users/${userId ?? 5}`)
       .then((response) => {
         props.toggleProfileInfoIsFetching(false);
         props.setProfileInfo(response.data);
       });
-  }, [userId]); */
+  }, [userId]);
 
   return <Profile
     isFetching={props.isFetching}
