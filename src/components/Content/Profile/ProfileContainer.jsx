@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
@@ -18,19 +17,17 @@ const ProfileContainer = (props) => {
     headers: {
       'X-Requested-With': 'XMLHttpReques',
     },
-    credentials: true,
+    withCredentials: true,
   });
 
   async function logIn() {
     const csrf = await http.get('/sanctum/csrf-cookie');
     console.log('csrf = ', csrf);
-    debugger;
     const login = await http.post('/api/login', {
       email: 'stani@gmail.com',
       password: '0000',
     });
     console.log('login = ', login);
-    debugger;
 
     http.get(`api/users/${userId ?? 5}`)
       .then((response) => {
