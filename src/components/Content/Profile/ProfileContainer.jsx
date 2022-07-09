@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
@@ -12,37 +13,13 @@ import {
 const ProfileContainer = (props) => {
   const { userId } = useParams();
 
-  const http = axios.create({
-    baseURL: 'https://git-talks-server.herokuapp.com',
-    headers: {
-      'X-Requested-With': 'XMLHttpReques',
-    },
-    withCredentials: true,
-  });
-
-  async function logIn() {
-    const csrf = await http.get('/sanctum/csrf-cookie');
-    console.log('csrf = ', csrf);
-    const login = await http.post('/api/login', {
-      email: 'stani@gmail.com',
-      password: '0000',
-    });
-    console.log('login = ', login);
-
-    http.get(`api/users/${userId ?? 5}`)
+  useEffect(() => {
+    props.toggleProfileInfoIsFetching(true);
+    axios.get(`api/users/${userId ?? 5}`)
       .then((response) => {
         props.toggleProfileInfoIsFetching(false);
         props.setProfileInfo(response.data);
       });
-  }
-
-  /* useEffect(() => {
-    logIn();
-  }, []); */
-
-  useEffect(() => {
-    props.toggleProfileInfoIsFetching(true);
-    logIn();
   }, [userId]);
 
   return <Profile

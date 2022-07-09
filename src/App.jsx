@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import * as axios from 'axios';
 import { Provider } from 'react-redux';
 import './App.css';
 import Header from './components/Header/Header.jsx';
@@ -10,6 +11,29 @@ const App = (props) => {
   const { store } = props;
   const state = store.getState();
   // перерисовка сайдбара по нажатию бургера???
+
+  const http = axios.create({
+    baseURL: 'https://git-talks-server.herokuapp.com',
+    headers: {
+      'X-Requested-With': 'XMLHttpReques',
+    },
+    withCredentials: true,
+  });
+
+  async function logIn() {
+    const csrf = await http.get('/sanctum/csrf-cookie');
+    console.log('csrf = ', csrf);
+    const login = await http.post('/api/login', {
+      email: 'stani@gmail.com',
+      password: '0000',
+    });
+    console.log('login = ', login);
+  }
+
+  useEffect(() => {
+    logIn();
+  }, []);
+
   return (
     <Provider store={store} >
       <div className="app-wrapper">
