@@ -19,7 +19,7 @@ const Profile = (props) => (
 Profile.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   profileInfo: PropTypes.object.isRequired,
-  posts: PropTypes.object.isRequired,
+  posts: PropTypes.array.isRequired,
   postUserInfo: PropTypes.object.isRequired,
 };
 

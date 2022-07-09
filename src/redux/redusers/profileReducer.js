@@ -7,7 +7,15 @@ const ACTIONS = {
 
 const initialState = {
   isFetching: false,
-  profileInfo: {},
+  profileInfo: {
+    photo: '',
+    name: '',
+    login: '',
+    birthday: '',
+    city: '',
+    website: '',
+    about: '',
+  },
   posts: [
     {
       id: 1,

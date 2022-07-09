@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import * as axios from 'axios';
 import { connect } from 'react-redux';
 import Profile from './Profile.jsx';
@@ -8,30 +9,30 @@ import {
   toggleProfileInfoIsFetching,
 } from '../../../redux/redusers/profileReducer';
 
-class ProfileContainer extends React.Component {
-  componentDidMount() {
-    this.props.toggleProfileInfoIsFetching(true);
-    axios.get('https://git-talks-server.herokuapp.com/api/users/3')
-      .then((response) => {
-        this.props.toggleProfileInfoIsFetching(false);
-        this.props.setProfileInfo(response.data);
-      });
-  }
+const ProfileContainer = (props) => {
+  const { userId } = useParams();
 
-  render() {
-    return <Profile
-    isFetching={this.props.isFetching}
-    profileInfo={this.props.profileInfo}
-    posts={this.props.posts}
-    postUserInfo={this.props.postUserInfo}
+  useEffect(() => {
+    props.toggleProfileInfoIsFetching(true);
+    axios.get(`https://git-talks-server.herokuapp.com/api/users/${userId ?? 5}`)
+      .then((response) => {
+        props.toggleProfileInfoIsFetching(false);
+        props.setProfileInfo(response.data);
+      });
+  }, [userId]);
+
+  return <Profile
+    isFetching={props.isFetching}
+    profileInfo={props.profileInfo}
+    posts={props.posts}
+    postUserInfo={props.postUserInfo}
     />;
-  }
-}
+};
 
 ProfileContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   profileInfo: PropTypes.object.isRequired,
-  posts: PropTypes.object.isRequired,
+  posts: PropTypes.array.isRequired,
   postUserInfo: PropTypes.object.isRequired,
   setProfileInfo: PropTypes.func.isRequired,
   toggleProfileInfoIsFetching: PropTypes.func.isRequired,
