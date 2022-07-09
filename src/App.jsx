@@ -13,10 +13,9 @@ const App = (props) => {
   // перерисовка сайдбара по нажатию бургера???
 
   const http = axios.create({
-    baseURL: 'https://git-talks-server.herokuapp.com',
+    baseURL: 'http://127.0.0.1:8000',
     headers: {
       'X-Requested-With': 'XMLHttpReques',
-      Accept: 'application/json',
     },
     withCredentials: true,
   });
@@ -29,6 +28,8 @@ const App = (props) => {
       password: '0000',
     });
     console.log('login = ', login);
+    const u = await http.get('/api/users');
+    console.log('u = ', u);
   }
 
   useEffect(() => {

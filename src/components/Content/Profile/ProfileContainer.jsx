@@ -12,10 +12,17 @@ import {
 
 const ProfileContainer = (props) => {
   const { userId } = useParams();
+  const http = axios.create({
+    baseURL: 'http://127.0.0.1:8000',
+    headers: {
+      'X-Requested-With': 'XMLHttpReques',
+    },
+    withCredentials: true,
+  });
 
   useEffect(() => {
     props.toggleProfileInfoIsFetching(true);
-    axios.get(`api/users/${userId ?? 5}`)
+    http.get(`http://127.0.0.1:8000/api/users/${userId ?? 1}`)
       .then((response) => {
         props.toggleProfileInfoIsFetching(false);
         props.setProfileInfo(response.data);

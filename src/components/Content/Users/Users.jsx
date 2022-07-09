@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import UsersPaginator from './UsersPaginator/UsersPaginator.jsx';
 import UserCard from './UserCard/UserCard.jsx';
 import DashLoader from '../../Common/Preloaders/DashLoader/DashLoader.jsx';
@@ -24,14 +23,12 @@ const Users = (props) => {
     <div className={css.user_cards_container}>
       {props.isFetching ? <div className={css.loader}><DashLoader /></div>
         : props.users.map((user) => <div className={css.user_card} key={user.id}>
-          <NavLink to={`/profile/${user.id}`}>
             <UserCard
               key={user.id}
               {...user}
               followUser={props.followUser}
               unfollowUser={props.unfollowUser}
             />
-          </NavLink>
         </div>)}
     </div>
   </div >;

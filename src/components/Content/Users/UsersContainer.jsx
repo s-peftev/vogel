@@ -14,8 +14,15 @@ import {
 
 class UsersContainer extends React.Component {
   componentDidMount() {
+    const http = axios.create({
+      baseURL: 'http://127.0.0.1:8000',
+      headers: {
+        'X-Requested-With': 'XMLHttpReques',
+      },
+      withCredentials: true,
+    });
     this.props.toggleIsFetching(true);
-    axios.get(`https://git-talks-server.herokuapp.com/api/users?page=${this.props.currentPage}&count=${this.props.usersPerPage}`)
+    http.get(`http://127.0.0.1:8000/api/users?page=${this.props.currentPage}&count=${this.props.usersPerPage}`)
       .then((response) => {
         this.props.toggleIsFetching(false);
         this.props.setUsers(response.data.items.data);
@@ -24,10 +31,17 @@ class UsersContainer extends React.Component {
   }
 
   pageOnClick = (pageNumber) => {
+    const http = axios.create({
+      baseURL: 'http://127.0.0.1:8000',
+      headers: {
+        'X-Requested-With': 'XMLHttpReques',
+      },
+      withCredentials: true,
+    });
     const totalPages = Math.ceil(this.props.totalUsersCount / this.props.usersPerPage);
     if (pageNumber > 0 && pageNumber <= totalPages) {
       this.props.toggleIsFetching(true);
-      axios.get(`https://git-talks-server.herokuapp.com/api/users?page=${pageNumber}&count=${this.props.usersPerPage}`)
+      http.get(`http://127.0.0.1:8000/api/users?page=${pageNumber}&count=${this.props.usersPerPage}`)
         .then((response) => {
           this.props.toggleIsFetching(false);
           this.props.setCurrentPage(pageNumber);

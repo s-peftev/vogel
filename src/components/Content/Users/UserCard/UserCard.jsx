@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import css from './UserCard.module.css';
 
 const UserCard = (props) => {
@@ -16,32 +17,32 @@ const UserCard = (props) => {
 
   return (
     <div className={css.user_card}>
-      <div className={css.photo}>
-        <img src={photo} alt='' />
-      </div>
-      <div className={css.info}>
-        <div className={css.info_header}>
-          <div className={css.user}>
-            <h6 className={css.name}>{name}</h6>
-            <p className={css.login}>{login}</p>
+        <NavLink to={`/profile/${id}`} className={css.photo}>
+          <img src={photo} alt='' />
+        </NavLink>
+        <NavLink to={`/profile/${id}`} className={css.info}>
+          <div className={css.info_header}>
+            <div className={css.user}>
+              <h6 className={css.name}>{name}</h6>
+              <p className={css.login}>{login}</p>
+            </div>
           </div>
-          <div className={css.following}>
-            {
-              followed
-                ? <button
-                  className={`${css.following_btn} ${css.unfollow}`}
-                  onClick={() => { unfollowUser(id); }} >Unfollow
-                </button>
-                : <button
-                  className={`${css.following_btn} ${css.follow}`}
-                  onClick={() => { followUser(id); }} >Follow
-                </button>
-            }
+          <div className={css.info_body}>
+            <p className={css.about}>{about}</p>
           </div>
-        </div>
-        <div className={css.info_body}>
-          <p className={css.about}>{about}</p>
-        </div>
+        </NavLink>
+      <div className={css.following}>
+        {
+          followed
+            ? <button
+              className={`${css.following_btn} ${css.unfollow}`}
+              onClick={() => { unfollowUser(id); }} >Unfollow
+            </button>
+            : <button
+              className={`${css.following_btn} ${css.follow}`}
+              onClick={() => { followUser(id); }} >Follow
+            </button>
+        }
       </div>
     </div>
   );
