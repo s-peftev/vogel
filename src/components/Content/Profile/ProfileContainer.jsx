@@ -31,6 +31,12 @@ const ProfileContainer = (props) => {
     });
     console.log('login = ', login);
     debugger;
+
+    http.get(`api/users/${userId ?? 5}`)
+      .then((response) => {
+        props.toggleProfileInfoIsFetching(false);
+        props.setProfileInfo(response.data);
+      });
   }
 
   /* useEffect(() => {
@@ -40,11 +46,6 @@ const ProfileContainer = (props) => {
   useEffect(() => {
     props.toggleProfileInfoIsFetching(true);
     logIn();
-    axios.get(`https://git-talks-server.herokuapp.com/api/users/${userId ?? 5}`)
-      .then((response) => {
-        props.toggleProfileInfoIsFetching(false);
-        props.setProfileInfo(response.data);
-      });
   }, [userId]);
 
   return <Profile
