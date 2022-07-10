@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import * as axios from 'axios';
 import css from './UserCard.module.css';
 
 const UserCard = (props) => {
@@ -14,6 +15,14 @@ const UserCard = (props) => {
     followUser,
     unfollowUser,
   } = props;
+
+  const http = axios.create({
+    baseURL: 'http://127.0.0.1:8000',
+    headers: {
+      'X-Requested-With': 'XMLHttpReques',
+    },
+    withCredentials: true,
+  });
 
   return (
     <div className={css.user_card}>
@@ -36,11 +45,23 @@ const UserCard = (props) => {
           followed
             ? <button
               className={`${css.following_btn} ${css.unfollow}`}
-              onClick={() => { unfollowUser(id); }} >Unfollow
+              onClick={() => {
+                http.delete(`api/follow/${id}`).then((response) => {
+                  if (response.data.done) {
+                    unfollowUser(id);
+                  }
+                });
+              }} >Unfollow
             </button>
             : <button
               className={`${css.following_btn} ${css.follow}`}
-              onClick={() => { followUser(id); }} >Follow
+              onClick={() => {
+                http.post(`api/follow/${id}`).then((response) => {
+                  if (response.data.done) {
+                    followUser(id);
+                  }
+                });
+              }} >Follow
             </button>
         }
       </div>
