@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Messages from './Messages/Messages.jsx';
 import News from './News/News.jsx';
 import Music from './Music/Music.jsx';
@@ -9,7 +9,8 @@ import ProfileContainer from './Profile/ProfileContainer.jsx';
 
 const Content = () => (
   <Routes>
-    <Route path='/profile/' element={<ProfileContainer />}>
+    <Route path='/' element={<Navigate to='/profile/' />} />
+    <Route path='/profile/' element={<ProfileContainer />} >
       <Route path=':userId' element={<ProfileContainer />} />
     </Route>
     <Route path='/messages/*' element={<Messages />} />

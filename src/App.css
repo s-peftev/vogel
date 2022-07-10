@@ -28,7 +28,7 @@
   /* 64px - header height */
 }
 
-/* TABLET */
+/* TABLET *//*
 @media (max-width: 991.98px) {
   .sidebar {
     position: fixed;
@@ -44,4 +44,4 @@
     top: 0;
     overflow: auto;
   }
-}
+}*/

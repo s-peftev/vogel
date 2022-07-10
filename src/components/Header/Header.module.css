@@ -17,11 +17,15 @@
     height: auto;
 }
 
+.auth {
+    color: #dddddd;
+}
+/*
 .burger {
     display: none;
-}
+}*/
 
-/* TABLET */
+/* TABLET *//*
 @media (max-width: 991.98px) {
     .burger {
         display: flex;
@@ -29,4 +33,4 @@
         height: 50px;
         z-index: 50;
     }
-}
+}*/

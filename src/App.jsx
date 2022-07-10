@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import * as axios from 'axios';
 import { Provider } from 'react-redux';
 import './App.css';
-import Header from './components/Header/Header.jsx';
 import Content from './components/Content/Content.jsx';
 import Sidebar from './components/Sidebar/Sidebar.jsx';
+import HeaderContainer from './components/Header/HeaderContainer.jsx';
 
 const App = (props) => {
   const { store } = props;
@@ -21,15 +21,19 @@ const App = (props) => {
   });
 
   async function logIn() {
-    const csrf = await http.get('/sanctum/csrf-cookie');
-    console.log('csrf = ', csrf);
-    const login = await http.post('/api/login', {
+    await http.get('/sanctum/csrf-cookie');
+    // console.log('csrf = ', csrf);
+    await http.post('/api/login', {
       email: 'stani@gmail.com',
       password: '0000',
     });
-    console.log('login = ', login);
-    const u = await http.get('/api/users');
+    /* console.log('login = ', login);
+    const u = await http.post('api/auth/me');
     console.log('u = ', u);
+    const o = await http.post('api/logout');
+    console.log('o = ', o);
+    const u1 = await http.post('api/auth/me');
+    console.log('u1 = ', u1); */
   }
 
   useEffect(() => {
@@ -39,7 +43,7 @@ const App = (props) => {
   return (
     <Provider store={store} >
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <div className='main-row'>
           <nav
             className={state.header.burger_menu.isActive ? 'sidebar sidebar_active' : 'sidebar'}
