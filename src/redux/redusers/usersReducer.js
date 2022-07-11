@@ -3,6 +3,7 @@
 const ACTIONS = {
   SET_USERS: 'SET_USERS',
   TOGGLE_IS_FETCHING: 'TOGGLE_IS_FETCHING',
+  TOGGLE_IS_FOLLOW_BTN_BLOCKED: 'TOGGLE_IS_FOLLOW_BTN_BLOCKED',
   FOLLOW_USER: 'FOLLOW_USER',
   UNFOLLOW_USER: 'UNFOLLOW_USER',
   SET_CURRENT_PAGE: 'SET_CURRENT_PAGE',
@@ -12,6 +13,7 @@ const ACTIONS = {
 const initialState = {
   users: [],
   isFetching: false,
+  isFollowBtnBlocked: false,
   currentPage: 1,
   usersPerPage: 3,
   totalUsersCount: 0,
@@ -28,6 +30,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         isFetching: action.isFetching,
+      };
+    case ACTIONS.TOGGLE_IS_FOLLOW_BTN_BLOCKED:
+      return {
+        ...state,
+        isFollowBtnBlocked: action.isFollowBtnBlocked,
       };
     case ACTIONS.SET_CURRENT_PAGE:
       return {
@@ -74,6 +81,10 @@ export const setUsers = (users) => ({ type: ACTIONS.SET_USERS, users });
 
 export const toggleIsFetching = (isFetching) => ({
   type: ACTIONS.TOGGLE_IS_FETCHING, isFetching,
+});
+
+export const toggleIsFollowBtnBlocked = (isFollowBtnBlocked) => ({
+  type: ACTIONS.TOGGLE_IS_FOLLOW_BTN_BLOCKED, isFollowBtnBlocked,
 });
 
 export const setCurrentPage = (currentPage) => ({

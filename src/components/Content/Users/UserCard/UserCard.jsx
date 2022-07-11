@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
+import { follow, unfollow } from '../../../../api/api';
 import css from './UserCard.module.css';
 
 const UserCard = (props) => {
@@ -16,49 +16,47 @@ const UserCard = (props) => {
     unfollowUser,
   } = props;
 
-  const http = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
-    headers: {
-      'X-Requested-With': 'XMLHttpReques',
-    },
-    withCredentials: true,
-  });
-
   return (
     <div className={css.user_card}>
-        <NavLink to={`/profile/${id}`} className={css.photo}>
-          <img src={photo} alt='' />
-        </NavLink>
-        <NavLink to={`/profile/${id}`} className={css.info}>
-          <div className={css.info_header}>
-            <div className={css.user}>
-              <h6 className={css.name}>{name}</h6>
-              <p className={css.login}>{login}</p>
-            </div>
+      <NavLink to={`/profile/${id}`} className={css.photo}>
+        <img src={photo} alt='' />
+      </NavLink>
+      <NavLink to={`/profile/${id}`} className={css.info}>
+        <div className={css.info_header}>
+          <div className={css.user}>
+            <h6 className={css.name}>{name}</h6>
+            <p className={css.login}>{login}</p>
           </div>
-          <div className={css.info_body}>
-            <p className={css.about}>{about}</p>
-          </div>
-        </NavLink>
+        </div>
+        <div className={css.info_body}>
+          <p className={css.about}>{about}</p>
+        </div>
+      </NavLink>
       <div className={css.following}>
         {
           followed
             ? <button
+              disabled={props.isFollowBtnBlocked}
               className={`${css.following_btn} ${css.unfollow}`}
               onClick={() => {
-                http.delete(`api/follow/${id}`).then((response) => {
-                  if (response.data.done) {
+                props.toggleIsFollowBtnBlocked(true);
+                unfollow(id).then((data) => {
+                  if (data.done) {
                     unfollowUser(id);
+                    props.toggleIsFollowBtnBlocked(false);
                   }
                 });
               }} >Unfollow
             </button>
             : <button
+              disabled={props.isFollowBtnBlocked}
               className={`${css.following_btn} ${css.follow}`}
               onClick={() => {
-                http.post(`api/follow/${id}`).then((response) => {
-                  if (response.data.done) {
+                props.toggleIsFollowBtnBlocked(true);
+                follow(id).then((data) => {
+                  if (data.done) {
                     followUser(id);
+                    props.toggleIsFollowBtnBlocked(false);
                   }
                 });
               }} >Follow
@@ -77,7 +75,9 @@ UserCard.propTypes = {
   about: PropTypes.string.isRequired,
   followed: PropTypes.bool.isRequired,
   followUser: PropTypes.func.isRequired,
+  toggleIsFollowBtnBlocked: PropTypes.func.isRequired,
   unfollowUser: PropTypes.func.isRequired,
+  isFollowBtnBlocked: PropTypes.bool.isRequired,
 };
 
 export default UserCard;

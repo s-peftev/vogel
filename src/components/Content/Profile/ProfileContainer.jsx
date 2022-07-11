@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
-import * as axios from 'axios';
 import { connect } from 'react-redux';
+import { getProfileInfo } from '../../../api/api';
 import Profile from './Profile.jsx';
 import {
   setProfileInfo,
@@ -12,21 +12,13 @@ import {
 
 const ProfileContainer = (props) => {
   const { userId } = useParams();
-  const http = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
-    headers: {
-      'X-Requested-With': 'XMLHttpReques',
-    },
-    withCredentials: true,
-  });
 
   useEffect(() => {
     props.toggleProfileInfoIsFetching(true);
-    http.get(`http://127.0.0.1:8000/api/users/${userId ?? 1}`)
-      .then((response) => {
-        props.toggleProfileInfoIsFetching(false);
-        props.setProfileInfo(response.data);
-      });
+    getProfileInfo(userId).then((data) => {
+      props.toggleProfileInfoIsFetching(false);
+      props.setProfileInfo(data);
+    });
   }, [userId]);
 
   return <Profile

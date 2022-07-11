@@ -28,6 +28,8 @@ const Users = (props) => {
               {...user}
               followUser={props.followUser}
               unfollowUser={props.unfollowUser}
+              toggleIsFollowBtnBlocked={props.toggleIsFollowBtnBlocked}
+              isFollowBtnBlocked={props.isFollowBtnBlocked}
             />
         </div>)}
     </div>
@@ -38,8 +40,10 @@ Users.propTypes = {
   pageOnClick: PropTypes.func.isRequired,
   followUser: PropTypes.func.isRequired,
   unfollowUser: PropTypes.func.isRequired,
+  toggleIsFollowBtnBlocked: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired,
   isFetching: PropTypes.bool.isRequired,
+  isFollowBtnBlocked: PropTypes.bool.isRequired,
   currentPage: PropTypes.number.isRequired,
   usersPerPage: PropTypes.number.isRequired,
   totalUsersCount: PropTypes.number.isRequired,

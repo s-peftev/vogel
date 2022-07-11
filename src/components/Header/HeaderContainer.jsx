@@ -1,24 +1,16 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as axios from 'axios';
+import { authMe } from '../../api/api';
 import Header from './Header.jsx';
 import { setUserData, toggleIsAuth } from '../../redux/redusers/authReducer';
 
 const HeaderContainer = (props) => {
-  const http = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
-    headers: {
-      'X-Requested-With': 'XMLHttpReques',
-    },
-    withCredentials: true,
-  });
-
   useEffect(() => {
-    http.post('/api/auth/me').then((response) => {
-      props.toggleIsAuth(response.data.isAuth);
-      if (response.data.isAuth) {
-        props.setUserData(response.data.userData);
+    authMe().then((data) => {
+      props.toggleIsAuth(data.isAuth);
+      if (data.isAuth) {
+        props.setUserData(data.userData);
       }
     });
   }, [props.isAuth]);
