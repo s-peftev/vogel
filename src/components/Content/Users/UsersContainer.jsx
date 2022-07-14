@@ -6,7 +6,7 @@ import Users from './Users.jsx';
 import {
   setUsers,
   toggleIsFetching,
-  toggleIsFollowBtnBlocked,
+  toggleDisabledFollowBtnUsersId,
   followUser,
   unfollowUser,
   setCurrentPage,
@@ -42,13 +42,13 @@ class UsersContainer extends React.Component {
       pageOnClick={this.pageOnClick}
       followUser={this.props.followUser}
       unfollowUser={this.props.unfollowUser}
-      toggleIsFollowBtnBlocked={this.props.toggleIsFollowBtnBlocked}
+      toggleDisabledFollowBtnUsersId={this.props.toggleDisabledFollowBtnUsersId}
       users={this.props.users}
       currentPage={this.props.currentPage}
       usersPerPage={this.props.usersPerPage}
       totalUsersCount={this.props.totalUsersCount}
       isFetching={this.props.isFetching}
-      isFollowBtnBlocked={this.props.isFollowBtnBlocked}
+      disabledFollowBtnUsersId={this.props.disabledFollowBtnUsersId}
     />;
   }
 }
@@ -56,7 +56,7 @@ class UsersContainer extends React.Component {
 UsersContainer.propTypes = {
   setUsers: PropTypes.func.isRequired,
   toggleIsFetching: PropTypes.func.isRequired,
-  toggleIsFollowBtnBlocked: PropTypes.func.isRequired,
+  toggleDisabledFollowBtnUsersId: PropTypes.func.isRequired,
   setCurrentPage: PropTypes.func.isRequired,
   setTotalUsersCount: PropTypes.func.isRequired,
   followUser: PropTypes.func.isRequired,
@@ -66,13 +66,13 @@ UsersContainer.propTypes = {
   usersPerPage: PropTypes.number.isRequired,
   totalUsersCount: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
-  isFollowBtnBlocked: PropTypes.bool.isRequired,
+  disabledFollowBtnUsersId: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   users: state.usersPage.users,
   isFetching: state.usersPage.isFetching,
-  isFollowBtnBlocked: state.usersPage.isFollowBtnBlocked,
+  disabledFollowBtnUsersId: state.usersPage.disabledFollowBtnUsersId,
   currentPage: state.usersPage.currentPage,
   usersPerPage: state.usersPage.usersPerPage,
   totalUsersCount: state.usersPage.totalUsersCount,
@@ -81,7 +81,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   setUsers,
   toggleIsFetching,
-  toggleIsFollowBtnBlocked,
+  toggleDisabledFollowBtnUsersId,
   setCurrentPage,
   setTotalUsersCount,
   followUser,

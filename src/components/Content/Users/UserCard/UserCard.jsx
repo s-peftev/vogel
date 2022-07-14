@@ -36,27 +36,27 @@ const UserCard = (props) => {
         {
           followed
             ? <button
-              disabled={props.isFollowBtnBlocked}
+              disabled={props.disabledFollowBtnUsersId.includes(id)}
               className={`${css.following_btn} ${css.unfollow}`}
               onClick={() => {
-                props.toggleIsFollowBtnBlocked(true);
+                props.toggleDisabledFollowBtnUsersId(id);
                 unfollow(id).then((data) => {
                   if (data.done) {
                     unfollowUser(id);
-                    props.toggleIsFollowBtnBlocked(false);
+                    props.toggleDisabledFollowBtnUsersId(id);
                   }
                 });
               }} >Unfollow
             </button>
             : <button
-              disabled={props.isFollowBtnBlocked}
+              disabled={props.disabledFollowBtnUsersId.includes(id)}
               className={`${css.following_btn} ${css.follow}`}
               onClick={() => {
-                props.toggleIsFollowBtnBlocked(true);
+                props.toggleDisabledFollowBtnUsersId(id);
                 follow(id).then((data) => {
                   if (data.done) {
                     followUser(id);
-                    props.toggleIsFollowBtnBlocked(false);
+                    props.toggleDisabledFollowBtnUsersId(id);
                   }
                 });
               }} >Follow
@@ -75,9 +75,9 @@ UserCard.propTypes = {
   about: PropTypes.string.isRequired,
   followed: PropTypes.bool.isRequired,
   followUser: PropTypes.func.isRequired,
-  toggleIsFollowBtnBlocked: PropTypes.func.isRequired,
+  toggleDisabledFollowBtnUsersId: PropTypes.func.isRequired,
   unfollowUser: PropTypes.func.isRequired,
-  isFollowBtnBlocked: PropTypes.bool.isRequired,
+  disabledFollowBtnUsersId: PropTypes.array.isRequired,
 };
 
 export default UserCard;

@@ -3,7 +3,7 @@
 const ACTIONS = {
   SET_USERS: 'SET_USERS',
   TOGGLE_IS_FETCHING: 'TOGGLE_IS_FETCHING',
-  TOGGLE_IS_FOLLOW_BTN_BLOCKED: 'TOGGLE_IS_FOLLOW_BTN_BLOCKED',
+  TOGGLE_DISABLED_FOLLOW_BTN_USERS_IS: 'TOGGLE_DISABLED_FOLLOW_BTN_USERS_IS',
   FOLLOW_USER: 'FOLLOW_USER',
   UNFOLLOW_USER: 'UNFOLLOW_USER',
   SET_CURRENT_PAGE: 'SET_CURRENT_PAGE',
@@ -13,7 +13,7 @@ const ACTIONS = {
 const initialState = {
   users: [],
   isFetching: false,
-  isFollowBtnBlocked: false,
+  disabledFollowBtnUsersId: [],
   currentPage: 1,
   usersPerPage: 3,
   totalUsersCount: 0,
@@ -31,10 +31,12 @@ const usersReducer = (state = initialState, action) => {
         ...state,
         isFetching: action.isFetching,
       };
-    case ACTIONS.TOGGLE_IS_FOLLOW_BTN_BLOCKED:
+    case ACTIONS.TOGGLE_DISABLED_FOLLOW_BTN_USERS_IS:
       return {
         ...state,
-        isFollowBtnBlocked: action.isFollowBtnBlocked,
+        disabledFollowBtnUsersId: state.disabledFollowBtnUsersId.includes(action.followBtnUserId)
+          ? state.disabledFollowBtnUsersId.filter((userId) => userId !== action.followBtnUserId)
+          : [...state.disabledFollowBtnUsersId, action.followBtnUserId],
       };
     case ACTIONS.SET_CURRENT_PAGE:
       return {
@@ -83,8 +85,8 @@ export const toggleIsFetching = (isFetching) => ({
   type: ACTIONS.TOGGLE_IS_FETCHING, isFetching,
 });
 
-export const toggleIsFollowBtnBlocked = (isFollowBtnBlocked) => ({
-  type: ACTIONS.TOGGLE_IS_FOLLOW_BTN_BLOCKED, isFollowBtnBlocked,
+export const toggleDisabledFollowBtnUsersId = (followBtnUserId) => ({
+  type: ACTIONS.TOGGLE_DISABLED_FOLLOW_BTN_USERS_IS, followBtnUserId,
 });
 
 export const setCurrentPage = (currentPage) => ({
