@@ -1,5 +1,7 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-param-last */
+import * as api from '../../api/api';
+
 const ACTIONS = {
   SET_USERS: 'SET_USERS',
   TOGGLE_IS_FETCHING: 'TOGGLE_IS_FETCHING',
@@ -100,5 +102,16 @@ export const setTotalUsersCount = (totalUsersCount) => ({
 export const followUser = (userID) => ({ type: ACTIONS.FOLLOW_USER, userID });
 
 export const unfollowUser = (userID) => ({ type: ACTIONS.UNFOLLOW_USER, userID });
+
+export const getUsers = (currentPage, usersPerPage) => (dispatch) => {
+  dispatch(toggleIsFetching(true));
+  api.getUsers(currentPage, usersPerPage)
+    .then((data) => {
+      dispatch(toggleIsFetching(false));
+      dispatch(setUsers(data.items.data));
+      dispatch(setCurrentPage(currentPage));
+      dispatch(setTotalUsersCount(data.totalCount));
+    });
+};
 
 export default usersReducer;

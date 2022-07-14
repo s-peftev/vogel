@@ -1,39 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getUsers } from '../../../api/api';
 import Users from './Users.jsx';
 import {
-  setUsers,
-  toggleIsFetching,
+  getUsers,
   toggleDisabledFollowBtnUsersId,
   followUser,
   unfollowUser,
-  setCurrentPage,
-  setTotalUsersCount,
 } from '../../../redux/redusers/usersReducer';
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-    getUsers(this.props.currentPage, this.props.usersPerPage)
-      .then((data) => {
-        this.props.toggleIsFetching(false);
-        this.props.setUsers(data.items.data);
-        this.props.setTotalUsersCount(data.totalCount);
-      });
+    this.props.getUsers(this.props.currentPage, this.props.usersPerPage);
   }
 
   pageOnClick = (pageNumber) => {
     const totalPages = Math.ceil(this.props.totalUsersCount / this.props.usersPerPage);
     if (pageNumber > 0 && pageNumber <= totalPages) {
-      this.props.toggleIsFetching(true);
-      getUsers(pageNumber, this.props.usersPerPage)
-        .then((data) => {
-          this.props.toggleIsFetching(false);
-          this.props.setCurrentPage(pageNumber);
-          this.props.setUsers(data.items.data);
-        });
+      this.props.getUsers(pageNumber, this.props.usersPerPage);
     }
   };
 
@@ -54,11 +38,8 @@ class UsersContainer extends React.Component {
 }
 
 UsersContainer.propTypes = {
-  setUsers: PropTypes.func.isRequired,
-  toggleIsFetching: PropTypes.func.isRequired,
+  getUsers: PropTypes.func.isRequired,
   toggleDisabledFollowBtnUsersId: PropTypes.func.isRequired,
-  setCurrentPage: PropTypes.func.isRequired,
-  setTotalUsersCount: PropTypes.func.isRequired,
   followUser: PropTypes.func.isRequired,
   unfollowUser: PropTypes.func.isRequired,
   users: PropTypes.array.isRequired,
@@ -79,11 +60,8 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  setUsers,
-  toggleIsFetching,
+  getUsers,
   toggleDisabledFollowBtnUsersId,
-  setCurrentPage,
-  setTotalUsersCount,
   followUser,
   unfollowUser,
 })(UsersContainer);
