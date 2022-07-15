@@ -1,6 +1,6 @@
 /* eslint-disable no-case-declarations */
 /* eslint-disable default-param-last */
-import * as api from '../../api/api';
+import { usersAPI } from '../../api/api';
 
 const ACTIONS = {
   SET_USERS: 'SET_USERS',
@@ -81,31 +81,27 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
+// action creators
 export const setUsers = (users) => ({ type: ACTIONS.SET_USERS, users });
-
 export const toggleIsFetching = (isFetching) => ({
   type: ACTIONS.TOGGLE_IS_FETCHING, isFetching,
 });
-
 export const toggleDisabledFollowBtnUsersId = (followBtnUserId) => ({
   type: ACTIONS.TOGGLE_DISABLED_FOLLOW_BTN_USERS_IS, followBtnUserId,
 });
-
 export const setCurrentPage = (currentPage) => ({
   type: ACTIONS.SET_CURRENT_PAGE, currentPage,
 });
-
 export const setTotalUsersCount = (totalUsersCount) => ({
   type: ACTIONS.SET_TOTAL_USERS_COUNT, totalUsersCount,
 });
+export const follow = (userID) => ({ type: ACTIONS.FOLLOW_USER, userID });
+export const unfollow = (userID) => ({ type: ACTIONS.UNFOLLOW_USER, userID });
 
-export const followUser = (userID) => ({ type: ACTIONS.FOLLOW_USER, userID });
-
-export const unfollowUser = (userID) => ({ type: ACTIONS.UNFOLLOW_USER, userID });
-
+// thunk creators
 export const getUsers = (currentPage, usersPerPage) => (dispatch) => {
   dispatch(toggleIsFetching(true));
-  api.getUsers(currentPage, usersPerPage)
+  usersAPI.getUsers(currentPage, usersPerPage)
     .then((data) => {
       dispatch(toggleIsFetching(false));
       dispatch(setUsers(data.items.data));
@@ -114,4 +110,25 @@ export const getUsers = (currentPage, usersPerPage) => (dispatch) => {
     });
 };
 
+export const followUser = (followUserId) => (dispatch) => {
+  dispatch(toggleDisabledFollowBtnUsersId(followUserId));
+  usersAPI.follow(followUserId).then((data) => {
+    if (data.done) {
+      dispatch(follow(followUserId));
+      dispatch(toggleDisabledFollowBtnUsersId(followUserId));
+    }
+  });
+};
+
+export const unfollowUser = (followUserId) => (dispatch) => {
+  dispatch(toggleDisabledFollowBtnUsersId(followUserId));
+  usersAPI.unfollow(followUserId).then((data) => {
+    if (data.done) {
+      dispatch(unfollow(followUserId));
+      dispatch(toggleDisabledFollowBtnUsersId(followUserId));
+    }
+  });
+};
+
+//
 export default usersReducer;

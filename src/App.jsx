@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { logIn } from './api/api';
+import { authAPI } from './api/api';
 import './App.css';
 import Content from './components/Content/Content.jsx';
 import Sidebar from './components/Sidebar/Sidebar.jsx';
@@ -13,7 +13,7 @@ const App = (props) => {
   // перерисовка сайдбара по нажатию бургера???
 
   useEffect(() => {
-    logIn();
+    authAPI.logIn();
   }, []);
 
   return (

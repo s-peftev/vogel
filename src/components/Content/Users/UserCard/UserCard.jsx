@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import { follow, unfollow } from '../../../../api/api';
 import css from './UserCard.module.css';
 
 const UserCard = (props) => {
@@ -38,28 +37,14 @@ const UserCard = (props) => {
             ? <button
               disabled={props.disabledFollowBtnUsersId.includes(id)}
               className={`${css.following_btn} ${css.unfollow}`}
-              onClick={() => {
-                props.toggleDisabledFollowBtnUsersId(id);
-                unfollow(id).then((data) => {
-                  if (data.done) {
-                    unfollowUser(id);
-                    props.toggleDisabledFollowBtnUsersId(id);
-                  }
-                });
-              }} >Unfollow
+              onClick={() => { unfollowUser(id); }} >
+              Unfollow
             </button>
             : <button
               disabled={props.disabledFollowBtnUsersId.includes(id)}
               className={`${css.following_btn} ${css.follow}`}
-              onClick={() => {
-                props.toggleDisabledFollowBtnUsersId(id);
-                follow(id).then((data) => {
-                  if (data.done) {
-                    followUser(id);
-                    props.toggleDisabledFollowBtnUsersId(id);
-                  }
-                });
-              }} >Follow
+              onClick={() => { followUser(id); }} >
+              Follow
             </button>
         }
       </div>

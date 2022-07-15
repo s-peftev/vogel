@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable default-param-last */
+import { profileAPI } from '../../api/api';
+
 const ACTIONS = {
   SET_PROFILE_INFO: 'SET_PROFILE_INFO',
   TOGGLE_PROFILE_INFO_IS_FETCHING: 'TOGGLE_PROFILE_INFO_IS_FETCHING',
@@ -58,9 +60,17 @@ const profileReducer = (state = initialState, action) => {
   }
 };
 
-export const setProfileInfo = (profileInfo) => ({ type: ACTIONS.SET_PROFILE_INFO, profileInfo });
-export const toggleProfileInfoIsFetching = (isFetching) => ({
+const setProfileInfo = (profileInfo) => ({ type: ACTIONS.SET_PROFILE_INFO, profileInfo });
+const toggleProfileInfoIsFetching = (isFetching) => ({
   type: ACTIONS.TOGGLE_PROFILE_INFO_IS_FETCHING, isFetching,
 });
+
+export const getProfileInfo = (userId) => (dispatch) => {
+  dispatch(toggleProfileInfoIsFetching(true));
+  profileAPI.getProfileInfo(userId).then((data) => {
+    dispatch(toggleProfileInfoIsFetching(false));
+    dispatch(setProfileInfo(data));
+  });
+};
 
 export default profileReducer;

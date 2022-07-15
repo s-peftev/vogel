@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable default-param-last */
+import { authAPI } from '../../api/api';
+
 const ACTIONS = {
   SET_USER_DATA: 'SET_USER_DATA',
   TOGGLE_IS_AUTH: 'TOGGLE_IS_AUTH',
@@ -33,9 +35,18 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setUserData = (userData) => ({ type: ACTIONS.SET_USER_DATA, userData });
-export const toggleIsAuth = (isAuth) => ({
+const setUserData = (userData) => ({ type: ACTIONS.SET_USER_DATA, userData });
+const toggleIsAuth = (isAuth) => ({
   type: ACTIONS.TOGGLE_IS_AUTH, isAuth,
 });
+
+export const authUser = () => (dispatch) => {
+  authAPI.authMe().then((data) => {
+    dispatch(toggleIsAuth(data.isAuth));
+    if (data.isAuth) {
+      dispatch(setUserData(data.userData));
+    }
+  });
+};
 
 export default authReducer;

@@ -3,22 +3,16 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getProfileInfo } from '../../../api/api';
 import Profile from './Profile.jsx';
 import {
-  setProfileInfo,
-  toggleProfileInfoIsFetching,
+  getProfileInfo,
 } from '../../../redux/redusers/profileReducer';
 
 const ProfileContainer = (props) => {
   const { userId } = useParams();
 
   useEffect(() => {
-    props.toggleProfileInfoIsFetching(true);
-    getProfileInfo(userId).then((data) => {
-      props.toggleProfileInfoIsFetching(false);
-      props.setProfileInfo(data);
-    });
+    props.getProfileInfo(userId);
   }, [userId]);
 
   return <Profile
@@ -34,8 +28,7 @@ ProfileContainer.propTypes = {
   profileInfo: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
   postUserInfo: PropTypes.object.isRequired,
-  setProfileInfo: PropTypes.func.isRequired,
-  toggleProfileInfoIsFetching: PropTypes.func.isRequired,
+  getProfileInfo: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -50,6 +43,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  setProfileInfo,
-  toggleProfileInfoIsFetching,
+  getProfileInfo,
 })(ProfileContainer);

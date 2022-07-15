@@ -1,18 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { authMe } from '../../api/api';
 import Header from './Header.jsx';
-import { setUserData, toggleIsAuth } from '../../redux/redusers/authReducer';
+import { authUser } from '../../redux/redusers/authReducer';
 
 const HeaderContainer = (props) => {
   useEffect(() => {
-    authMe().then((data) => {
-      props.toggleIsAuth(data.isAuth);
-      if (data.isAuth) {
-        props.setUserData(data.userData);
-      }
-    });
+    props.authUser();
   }, [props.isAuth]);
 
   return <Header {...props}/>;
@@ -20,8 +14,7 @@ const HeaderContainer = (props) => {
 
 HeaderContainer.propTypes = {
   isAuth: PropTypes.bool.isRequired,
-  toggleIsAuth: PropTypes.func.isRequired,
-  setUserData: PropTypes.func.isRequired,
+  authUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -33,4 +26,4 @@ const mapStateToProps = (state) => ({
   },
 });
 
-export default connect(mapStateToProps, { setUserData, toggleIsAuth })(HeaderContainer);
+export default connect(mapStateToProps, { authUser })(HeaderContainer);
