@@ -9,7 +9,7 @@ const http = axios.create({
 });
 
 export const authAPI = {
-  logIn: () => {
+  login: () => {
     http.get('sanctum/csrf-cookie').then(() => {
       http.post('api/login', {
         email: 'stani@gmail.com',

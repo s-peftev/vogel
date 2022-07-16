@@ -3,10 +3,12 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Profile from './Profile.jsx';
 import {
   getProfileInfo,
 } from '../../../redux/redusers/profileReducer';
+import withAuthRedirect from '../../../hoc/withAuthRedirect.jsx';
 
 const ProfileContainer = (props) => {
   const { userId } = useParams();
@@ -42,6 +44,9 @@ const mapStateToProps = (state) => ({
   },
 });
 
-export default connect(mapStateToProps, {
-  getProfileInfo,
-})(ProfileContainer);
+export default compose(
+  connect(mapStateToProps, {
+    getProfileInfo,
+  }),
+  withAuthRedirect,
+)(ProfileContainer);

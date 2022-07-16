@@ -5,7 +5,7 @@ const ACTIONS = {
 };
 
 const initialState = {
-  burger_menu: {
+  burgerMenu: {
     isActive: false,
   },
 };
@@ -14,7 +14,7 @@ const headerReducer = (state = initialState, action) => {
   switch (action.type) {
     case ACTIONS.TOGGLE_BURGER:
       const newState = { ...state };
-      newState.burger_menu.isActive = !state.burger_menu.isActive;
+      newState.burgerMenu.isActive = !state.burgerMenu.isActive;
       return newState;
     default:
       return state;

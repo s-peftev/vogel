@@ -8,8 +8,7 @@
   max-width: 350px;
   background-color: #0d1117;
   border-right: 1px solid #30363d;
-  min-height: calc(100vh - 64px);
-  /* 64px - header height */
+  /*min-height: calc(100vh - 64px);*/
   overflow: auto;
   position: sticky;
   top: 0;
@@ -25,7 +24,6 @@
   padding: 1.5rem;
   background-color: #010409;
   min-height: calc(100vh - 64px);
-  /* 64px - header height */
 }
 
 /* TABLET *//*

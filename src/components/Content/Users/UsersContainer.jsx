@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import Users from './Users.jsx';
 import {
   getUsers,
@@ -8,34 +9,33 @@ import {
   followUser,
   unfollowUser,
 } from '../../../redux/redusers/usersReducer';
+import withAuthRedirect from '../../../hoc/withAuthRedirect.jsx';
 
-class UsersContainer extends React.Component {
-  componentDidMount() {
-    this.props.getUsers(this.props.currentPage, this.props.usersPerPage);
-  }
+const UsersContainer = (props) => {
+  useEffect(() => {
+    props.getUsers(props.currentPage, props.usersPerPage);
+  }, []);
 
-  pageOnClick = (pageNumber) => {
-    const totalPages = Math.ceil(this.props.totalUsersCount / this.props.usersPerPage);
+  const pageOnClick = (pageNumber) => {
+    const totalPages = Math.ceil(props.totalUsersCount / props.usersPerPage);
     if (pageNumber > 0 && pageNumber <= totalPages) {
-      this.props.getUsers(pageNumber, this.props.usersPerPage);
+      props.getUsers(pageNumber, props.usersPerPage);
     }
   };
 
-  render() {
-    return <Users
-      pageOnClick={this.pageOnClick}
-      followUser={this.props.followUser}
-      unfollowUser={this.props.unfollowUser}
-      toggleDisabledFollowBtnUsersId={this.props.toggleDisabledFollowBtnUsersId}
-      users={this.props.users}
-      currentPage={this.props.currentPage}
-      usersPerPage={this.props.usersPerPage}
-      totalUsersCount={this.props.totalUsersCount}
-      isFetching={this.props.isFetching}
-      disabledFollowBtnUsersId={this.props.disabledFollowBtnUsersId}
+  return <Users
+      pageOnClick={pageOnClick}
+      followUser={props.followUser}
+      unfollowUser={props.unfollowUser}
+      toggleDisabledFollowBtnUsersId={props.toggleDisabledFollowBtnUsersId}
+      users={props.users}
+      currentPage={props.currentPage}
+      usersPerPage={props.usersPerPage}
+      totalUsersCount={props.totalUsersCount}
+      isFetching={props.isFetching}
+      disabledFollowBtnUsersId={props.disabledFollowBtnUsersId}
     />;
-  }
-}
+};
 
 UsersContainer.propTypes = {
   getUsers: PropTypes.func.isRequired,
@@ -59,9 +59,12 @@ const mapStateToProps = (state) => ({
   totalUsersCount: state.usersPage.totalUsersCount,
 });
 
-export default connect(mapStateToProps, {
-  getUsers,
-  toggleDisabledFollowBtnUsersId,
-  followUser,
-  unfollowUser,
-})(UsersContainer);
+export default compose(
+  connect(mapStateToProps, {
+    getUsers,
+    toggleDisabledFollowBtnUsersId,
+    followUser,
+    unfollowUser,
+  }),
+  withAuthRedirect,
+)(UsersContainer);

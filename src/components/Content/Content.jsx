@@ -6,9 +6,11 @@ import Music from './Music/Music.jsx';
 import Settings from './Settings/Settings.jsx';
 import UsersContainer from './Users/UsersContainer.jsx';
 import ProfileContainer from './Profile/ProfileContainer.jsx';
+import LoginContainer from '../Login/LoginContainer.jsx';
 
 const Content = () => (
   <Routes>
+    <Route path='/login' element={<LoginContainer />} />
     <Route path='/' element={<Navigate to='/profile/' />} />
     <Route path='/profile/' element={<ProfileContainer />} >
       <Route path=':userId' element={<ProfileContainer />} />
