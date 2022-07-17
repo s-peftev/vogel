@@ -50,9 +50,13 @@ export const authUser = () => (dispatch) => {
   });
 };
 
-export const login = (formData) => (dispatch) => {
-  authAPI.login(formData.email, formData.password).then((data) => {
-    dispatch(authUser());
+export const login = (email, password, setLoginStatus) => (dispatch) => {
+  authAPI.login(email, password).then((response) => {
+    if (response.data.loginStatus === 'success') {
+      dispatch(authUser());
+    } else if (response.data.loginStatus === 'fail') {
+      setLoginStatus({ isLoginFailed: true, errorMessage: response.data.message });
+    }
   });
 };
 
