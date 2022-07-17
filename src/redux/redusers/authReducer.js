@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
 /* eslint-disable default-param-last */
 import { authAPI } from '../../api/api';
@@ -49,4 +50,26 @@ export const authUser = () => (dispatch) => {
   });
 };
 
+export const login = (formData) => (dispatch) => {
+  authAPI.login(formData.email, formData.password).then((data) => {
+    dispatch(authUser());
+  });
+};
+
+export const logout = () => (dispatch) => {
+  authAPI.logout().then(() => {
+    dispatch(setUserData({
+      id: '',
+      name: '',
+      login: '',
+      email: '',
+      photo: '',
+    }));
+    dispatch(authUser());
+  });
+};
+
 export default authReducer;
+
+/* email: 'stani@gmail.com',
+        password: '0000', */

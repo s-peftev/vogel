@@ -1,42 +1,20 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { authAPI } from './api/api';
+import React from 'react';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
 import Content from './components/Content/Content.jsx';
-import Sidebar from './components/Sidebar/Sidebar.jsx';
 import HeaderContainer from './components/Header/HeaderContainer.jsx';
-import { authUser } from './redux/redusers/authReducer';
+import LoginContainer from './components/Login/LoginContainer.jsx';
 
-const App = (props) => {
-  useEffect(() => {
-    authAPI.login();
-  }, []);
-
-  return (
-    <div className="app-wrapper">
-      <HeaderContainer />
-      <div className='main-row'>
-        <nav
-          className={props.burgerIsActive
-            ? 'sidebar sidebar_active' : 'sidebar'}
-        >
-          <Sidebar />
-        </nav>
-        <main className="main">
-          <Content />
-        </main>
-      </div>
+const App = () => (
+  <div className="app-wrapper">
+    <HeaderContainer />
+    <div className='main-row'>
+      <Routes>
+        <Route path='/login' element={<LoginContainer />} />
+        <Route path='/*' element={<Content />} />
+      </Routes>
     </div>
-  );
-};
+  </div>
+);
 
-App.propTypes = {
-  burgerIsActive: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  burgerIsActive: state.header.burgerMenu.isActive,
-});
-
-export default connect(mapStateToProps, { authUser })(App);
+export default App;

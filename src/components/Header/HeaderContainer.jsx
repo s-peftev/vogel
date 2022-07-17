@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from './Header.jsx';
-import { authUser } from '../../redux/redusers/authReducer';
+import { authUser, logout } from '../../redux/redusers/authReducer';
 
 const HeaderContainer = (props) => {
   useEffect(() => {
@@ -21,9 +21,8 @@ const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
   userData: {
     name: state.auth.userData.name,
-    login: state.auth.userData.login,
     photo: state.auth.userData.photo,
   },
 });
 
-export default connect(mapStateToProps, { authUser })(HeaderContainer);
+export default connect(mapStateToProps, { authUser, logout })(HeaderContainer);

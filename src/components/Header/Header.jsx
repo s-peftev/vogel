@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import css from './Header.module.css';
+import AuthPane from './AuthPane/AuthPane.jsx';
 
 const Header = (props) => (
   <div className={css.header}>
@@ -10,8 +11,8 @@ const Header = (props) => (
     </NavLink>
     <div className={css.auth}>
       {props.isAuth
-        ? <h2>{props.userData.name}</h2>
-        : <NavLink to={'/login'}>Login</NavLink>}
+        ? <AuthPane {...props.userData} logout={props.logout} />
+        : null}
     </div>
   </div>
 );
@@ -19,6 +20,7 @@ const Header = (props) => (
 Header.propTypes = {
   isAuth: PropTypes.bool.isRequired,
   userData: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default Header;

@@ -9,18 +9,13 @@ const http = axios.create({
 });
 
 export const authAPI = {
-  login: () => {
-    http.get('sanctum/csrf-cookie').then(() => {
-      http.post('api/login', {
-        email: 'stani@gmail.com',
-        password: '0000',
-      });
-    });
-  },
+  login: (email, password) => http.get('sanctum/csrf-cookie')
+    .then(() => http.post('api/login', {
+      email,
+      password,
+    })),
 
-  logout: () => {
-    http.post('api/logout');
-  },
+  logout: () => http.post('api/logout'),
 
   authMe: () => http.post('api/auth/me')
     .then((response) => response.data),
@@ -30,9 +25,6 @@ export const profileAPI = {
   getProfileInfo: (userId) => http.get(`api/users/${userId ?? 1}`)
     .then((response) => response.data),
 };
-
-export const getProfileInfo = (userId) => http.get(`api/users/${userId ?? 1}`)
-  .then((response) => response.data);
 
 export const usersAPI = {
   getUsers: (currentPage = 1, usersPerPage = 10) => http
