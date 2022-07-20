@@ -14,7 +14,7 @@ const ProfileContainer = (props) => {
   const { userId } = useParams();
 
   useEffect(() => {
-    props.getProfileInfo(userId);
+    props.getProfileInfo(userId ?? props.myProfileId);
   }, [userId]);
 
   return <Profile
@@ -26,6 +26,7 @@ const ProfileContainer = (props) => {
 };
 
 ProfileContainer.propTypes = {
+  myProfileId: PropTypes.number.isRequired,
   isFetching: PropTypes.bool.isRequired,
   profileInfo: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
@@ -34,6 +35,7 @@ ProfileContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  myProfileId: state.auth.userData.id,
   isFetching: state.profilePage.isFetching,
   profileInfo: state.profilePage.profileInfo,
   posts: state.profilePage.posts,

@@ -41,37 +41,32 @@ const toggleIsAuth = (isAuth) => ({
   type: ACTIONS.TOGGLE_IS_AUTH, isAuth,
 });
 
-export const authUser = () => (dispatch) => {
-  authAPI.authMe().then((data) => {
-    dispatch(toggleIsAuth(data.isAuth));
-    if (data.isAuth) {
-      dispatch(setUserData(data.userData));
-    }
-  });
-};
+export const authUser = () => (dispatch) => authAPI.authMe().then((data) => {
+  dispatch(toggleIsAuth(data.isAuth));
+  if (data.isAuth) {
+    dispatch(setUserData(data.userData));
+  }
+});
 
-export const login = (email, password, setLoginStatus) => (dispatch) => {
-  authAPI.login(email, password).then((response) => {
+export const login = (email, password, setLoginStatus) => (dispatch) => authAPI
+  .login(email, password).then((response) => {
     if (response.data.loginStatus === 'success') {
       dispatch(authUser());
     } else if (response.data.loginStatus === 'fail') {
       setLoginStatus({ isLoginFailed: true, errorMessage: response.data.message });
     }
   });
-};
 
-export const logout = () => (dispatch) => {
-  authAPI.logout().then(() => {
-    dispatch(setUserData({
-      id: '',
-      name: '',
-      login: '',
-      email: '',
-      photo: '',
-    }));
-    dispatch(authUser());
-  });
-};
+export const logout = () => (dispatch) => authAPI.logout().then(() => {
+  dispatch(setUserData({
+    id: '',
+    name: '',
+    login: '',
+    email: '',
+    photo: '',
+  }));
+  dispatch(authUser());
+});
 
 export default authReducer;
 

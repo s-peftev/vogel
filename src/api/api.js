@@ -22,7 +22,7 @@ export const authAPI = {
 };
 
 export const profileAPI = {
-  getProfileInfo: (userId) => http.get(`api/users/${userId ?? 1}`)
+  getProfileInfo: (userId) => http.get(`api/users/${userId}`)
     .then((response) => response.data),
 };
 
