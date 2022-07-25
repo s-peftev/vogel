@@ -24,6 +24,17 @@ export const authAPI = {
 export const profileAPI = {
   getProfileInfo: (userId) => http.get(`api/users/${userId}`)
     .then((response) => response.data),
+
+  saveNewMainPhoto: (photo) => {
+    const formData = new FormData();
+    formData.append('photo', photo);
+    return http.post('api/user/photo', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+      .then((response) => response.data);
+  },
 };
 
 export const usersAPI = {

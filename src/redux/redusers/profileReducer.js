@@ -1,14 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable default-param-last */
 import { profileAPI } from '../../api/api';
+import { authUser } from './authReducer';
 
 const ACTIONS = {
   SET_PROFILE_INFO: 'SET_PROFILE_INFO',
+  SET_PROFILE_PHOTO: 'SET_PROFILE_PHOTO',
   TOGGLE_PROFILE_INFO_IS_FETCHING: 'TOGGLE_PROFILE_INFO_IS_FETCHING',
+  TOGGLE_MAIN_PHOTO_CHANGING_IS_FETCHING: 'TOGGLE_MAIN_PHOTO_CHANGING_IS_FETCHING',
 };
 
 const initialState = {
-  isFetching: false,
+  profileInfoIsFetching: false,
+  mainPhotoChangingIsFetching: false,
   profileInfo: {
     photo: '',
     name: '',
@@ -50,10 +54,20 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         profileInfo: { ...action.profileInfo },
       };
+    case ACTIONS.SET_PROFILE_PHOTO:
+      return {
+        ...state,
+        profileInfo: { ...state.profileInfo, photo: action.profilePhoto },
+      };
     case ACTIONS.TOGGLE_PROFILE_INFO_IS_FETCHING:
       return {
         ...state,
-        isFetching: action.isFetching,
+        profileInfoIsFetching: action.isFetching,
+      };
+    case ACTIONS.TOGGLE_MAIN_PHOTO_CHANGING_IS_FETCHING:
+      return {
+        ...state,
+        mainPhotoChangingIsFetching: action.isFetching,
       };
     default:
       return state;
@@ -61,8 +75,12 @@ const profileReducer = (state = initialState, action) => {
 };
 
 const setProfileInfo = (profileInfo) => ({ type: ACTIONS.SET_PROFILE_INFO, profileInfo });
+const setProfilePhoto = (profilePhoto) => ({ type: ACTIONS.SET_PROFILE_PHOTO, profilePhoto });
 const toggleProfileInfoIsFetching = (isFetching) => ({
   type: ACTIONS.TOGGLE_PROFILE_INFO_IS_FETCHING, isFetching,
+});
+const toggleIsFetchingMainPhotoChanging = (isFetching) => ({
+  type: ACTIONS.TOGGLE_MAIN_PHOTO_CHANGING_IS_FETCHING, isFetching,
 });
 
 export const getProfileInfo = (userId) => (dispatch) => {
@@ -70,6 +88,17 @@ export const getProfileInfo = (userId) => (dispatch) => {
   profileAPI.getProfileInfo(userId).then((data) => {
     dispatch(toggleProfileInfoIsFetching(false));
     dispatch(setProfileInfo(data));
+  });
+};
+
+export const changeMainPhoto = (photo) => (dispatch) => {
+  dispatch(toggleIsFetchingMainPhotoChanging(true));
+  profileAPI.saveNewMainPhoto(photo).then((data) => {
+    dispatch(toggleProfileInfoIsFetching(false));
+    if (data.resultCode === 0) {
+      dispatch(setProfilePhoto(data.photo));
+      dispatch(authUser());
+    }
   });
 };
 

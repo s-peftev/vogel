@@ -9,7 +9,7 @@ const Profile = (props) => (
   <div className={css.profile}>
     {props.isFetching ? <div className={css.loader}><DashLoader /></div>
       : <><div className={css.pofile_card}>
-        <ProfileCard {...props.profileInfo} />
+        <ProfileCard {...props.profileInfo } changeMainPhoto={props.changeMainPhoto}/>
       </div><div className={css.posts}>
           <Posts posts={props.posts} postUserInfo={props.postUserInfo} />
         </div></>}
@@ -21,6 +21,7 @@ Profile.propTypes = {
   profileInfo: PropTypes.object.isRequired,
   posts: PropTypes.array.isRequired,
   postUserInfo: PropTypes.object.isRequired,
+  changeMainPhoto: PropTypes.func.isRequired,
 };
 
 export default Profile;

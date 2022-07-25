@@ -7,6 +7,7 @@ import { compose } from 'redux';
 import Profile from './Profile.jsx';
 import {
   getProfileInfo,
+  changeMainPhoto,
 } from '../../../redux/redusers/profileReducer';
 import withAuthRedirect from '../../../hoc/withAuthRedirect.jsx';
 import * as selectors from '../../../redux/selectors';
@@ -23,6 +24,7 @@ const ProfileContainer = (props) => {
     profileInfo={props.profileInfo}
     posts={props.posts}
     postUserInfo={props.postUserInfo}
+    changeMainPhoto={props.changeMainPhoto}
     />;
 };
 
@@ -33,6 +35,7 @@ ProfileContainer.propTypes = {
   posts: PropTypes.array.isRequired,
   postUserInfo: PropTypes.object.isRequired,
   getProfileInfo: PropTypes.func.isRequired,
+  changeMainPhoto: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -49,7 +52,7 @@ const mapStateToProps = (state) => ({
 
 export default compose(
   connect(mapStateToProps, {
-    getProfileInfo,
+    getProfileInfo, changeMainPhoto,
   }),
   withAuthRedirect,
 )(ProfileContainer);

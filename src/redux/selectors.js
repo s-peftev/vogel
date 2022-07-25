@@ -29,7 +29,7 @@ export const selectTotalUsersCount = (state) => state.usersPage.usersPerPage;
 
 // Profile Reducer
 
-export const selectProfileIsFetching = (state) => state.profilePage.isFetching;
+export const selectProfileIsFetching = (state) => state.profilePage.profileInfoIsFetching;
 export const selectProfileInfo = (state) => state.profilePage.profileInfo;
 export const selectProfilePosts = (state) => state.profilePage.posts;
 

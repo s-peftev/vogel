@@ -11,13 +11,23 @@ const ProfileCard = (props) => {
     city,
     website,
     about,
+    changeMainPhoto,
   } = props;
+
+  const onPhotoSelected = ({ target }) => {
+    if (target.files.length) {
+      changeMainPhoto(target.files[0]);
+    }
+  };
 
   return (
     <div className={css.profile_card}>
       <div className={css.header}>
         <div className={css.photo}>
           <img src={photo} alt='profile avatar'></img>
+        </div>
+        <div className="">
+          <input type={'file'} onChange={onPhotoSelected} />
         </div>
         <div className={css.name}>
           <h6 className={css.user_name}>{name}</h6>
@@ -54,6 +64,7 @@ ProfileCard.propTypes = {
   city: PropTypes.string.isRequired,
   website: PropTypes.string.isRequired,
   about: PropTypes.string.isRequired,
+  changeMainPhoto: PropTypes.func.isRequired,
 };
 
 export default ProfileCard;

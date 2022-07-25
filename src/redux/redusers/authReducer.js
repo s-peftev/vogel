@@ -69,6 +69,3 @@ export const logout = () => (dispatch) => authAPI.logout().then(() => {
 });
 
 export default authReducer;
-
-/* email: 'stani@gmail.com',
-        password: '0000', */
