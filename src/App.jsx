@@ -8,6 +8,7 @@ import Content from './components/Content/Content.jsx';
 import HeaderContainer from './components/Header/HeaderContainer.jsx';
 import LoginContainer from './components/Login/LoginContainer.jsx';
 import DashLoader from './components/Common/Preloaders/DashLoader/DashLoader.jsx';
+import * as selectors from './redux/selectors';
 
 const App = (props) => {
   useEffect(() => {
@@ -36,7 +37,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  appInitialized: state.app.appInitialized,
+  appInitialized: selectors.selectIsAppInitialized(state),
 });
 
 export default connect(mapStateToProps, { initializeApp })(App);

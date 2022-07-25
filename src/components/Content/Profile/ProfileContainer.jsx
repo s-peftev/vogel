@@ -9,6 +9,7 @@ import {
   getProfileInfo,
 } from '../../../redux/redusers/profileReducer';
 import withAuthRedirect from '../../../hoc/withAuthRedirect.jsx';
+import * as selectors from '../../../redux/selectors';
 
 const ProfileContainer = (props) => {
   const { userId } = useParams();
@@ -35,14 +36,14 @@ ProfileContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  myProfileId: state.auth.userData.id,
-  isFetching: state.profilePage.isFetching,
-  profileInfo: state.profilePage.profileInfo,
-  posts: state.profilePage.posts,
+  myProfileId: selectors.selectAuthUserId(state),
+  isFetching: selectors.selectProfileIsFetching(state),
+  profileInfo: selectors.selectProfileInfo(state),
+  posts: selectors.selectProfilePosts(state),
   postUserInfo: {
-    userName: state.profilePage.profileInfo.name,
-    userLogin: state.profilePage.profileInfo.login,
-    userPhoto: state.profilePage.profileInfo.photo,
+    userName: selectors.selectProfileInfo(state).name,
+    userLogin: selectors.selectProfileInfo(state).login,
+    userPhoto: selectors.selectProfileInfo(state).photo,
   },
 });
 

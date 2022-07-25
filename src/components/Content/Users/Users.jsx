@@ -23,14 +23,14 @@ const Users = (props) => {
     <div className={css.user_cards_container}>
       {props.isFetching ? <div className={css.loader}><DashLoader /></div>
         : props.users.map((user) => <div className={css.user_card} key={user.id}>
-            <UserCard
-              key={user.id}
-              {...user}
-              followUser={props.followUser}
-              unfollowUser={props.unfollowUser}
-              toggleDisabledFollowBtnUsersId={props.toggleDisabledFollowBtnUsersId}
-              disabledFollowBtnUsersId={props.disabledFollowBtnUsersId}
-            />
+          <UserCard
+            key={user.id}
+            {...user}
+            followUser={props.followUser}
+            unfollowUser={props.unfollowUser}
+            toggleDisabledFollowBtnUsersId={props.toggleDisabledFollowBtnUsersId}
+            disabledFollowBtnUsersId={props.disabledFollowBtnUsersId}
+          />
         </div>)}
     </div>
   </div >;

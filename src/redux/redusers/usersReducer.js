@@ -17,7 +17,7 @@ const initialState = {
   isFetching: false,
   disabledFollowBtnUsersId: [],
   currentPage: 1,
-  usersPerPage: 3,
+  usersPerPage: 10,
   totalUsersCount: 0,
 };
 

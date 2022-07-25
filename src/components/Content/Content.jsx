@@ -12,6 +12,7 @@ import UsersContainer from './Users/UsersContainer.jsx';
 import ProfileContainer from './Profile/ProfileContainer.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
 import css from './Content.module.css';
+import * as selectors from '../../redux/selectors';
 
 const Content = (props) => (
   <>
@@ -42,7 +43,7 @@ Content.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  burgerIsActive: state.header.burgerMenu.isActive,
+  burgerIsActive: selectors.selectIsBurgerActive(state),
 });
 
 export default compose(

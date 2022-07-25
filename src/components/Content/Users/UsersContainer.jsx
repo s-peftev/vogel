@@ -10,6 +10,7 @@ import {
   unfollowUser,
 } from '../../../redux/redusers/usersReducer';
 import withAuthRedirect from '../../../hoc/withAuthRedirect.jsx';
+import * as selectors from '../../../redux/selectors';
 
 const UsersContainer = (props) => {
   useEffect(() => {
@@ -51,12 +52,12 @@ UsersContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  users: state.usersPage.users,
-  isFetching: state.usersPage.isFetching,
-  disabledFollowBtnUsersId: state.usersPage.disabledFollowBtnUsersId,
-  currentPage: state.usersPage.currentPage,
-  usersPerPage: state.usersPage.usersPerPage,
-  totalUsersCount: state.usersPage.totalUsersCount,
+  users: selectors.selectUsers(state),
+  isFetching: selectors.selectUsersIsFetching(state),
+  disabledFollowBtnUsersId: selectors.selectDisabledFollowBtnUsersId(state),
+  currentPage: selectors.selectCurrentPage(state),
+  usersPerPage: selectors.selectUsersPerPage(state),
+  totalUsersCount: selectors.selectTotalUsersCount(state),
 });
 
 export default compose(
